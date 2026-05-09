@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>???? ????? ???????? ???? | Shri Dahida Primary School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&family=Noto+Sans+Gujarati:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           CSS CUSTOM PROPERTIES
+           ============================================ */
+        :root {
+            --bg: #faf7f0;
+            --bg-warm: #f5f0e3;
+            --surface: #ffffff;
+            --surface-alt: #f0ebe0;
+            --primary: #1a472a;
+            --primary-light: #2d6b45;
+            --primary-dark: #0f2d1a;
+            --accent: #d4a843;
+            --accent-light: #e8c76a;
+            --accent-dark: #b8912e;
+            --saffron: #e07b3a;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4540;
+            --text-muted: #7a7570;
+            --text-on-dark: #f0ece4;
+            --text-on-accent: #1a1a1a;
+            --border: #e0dbd0;
+            --shadow-sm: 0 2px 8px rgba(26, 71, 42, 0.06);
+            --shadow-md: 0 8px 30px rgba(26, 71, 42, 0.1);
+            --shadow-lg: 0 20px 60px rgba(26, 71, 42, 0.12);
+            --shadow-glow: 0 0 40px rgba(212, 168, 67, 0.15);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-xl: 32px;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Source Serif 4', 'Noto Sans Gujarati', serif;
+            --font-guj: 'Noto Sans Gujarati', sans-serif;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-light); }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 71, 42, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(15, 45, 26, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            height: 76px;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 20px rgba(212, 168, 67, 0.3);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text-main {
+            font-family: var(--font-guj);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1.2;
+            letter-spacing: 0.02em;
+        }
+
+        .logo-text-sub {
+            font-family: var(--font-body);
+            font-size: 11px;
+            color: rgba(240, 236, 228, 0.6);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-guj);
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(240, 236, 228, 0.8);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+            background: rgba(212, 168, 67, 0.1);
+        }
+
+        .nav-cta {
+            background: var(--accent) !important;
+            color: var(--primary-dark) !important;
+            font-weight: 600 !important;
+            padding: 8px 20px !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-light) !important;
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2.5px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(212, 168, 67, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(26, 71, 42, 0.05) 0%, transparent 50%),
+                linear-gradient(175deg, var(--primary-dark) 0%, var(--primary) 45%, var(--primary-light) 100%);
+            overflow: hidden;
+            padding-top: 76px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a843' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.6;
+        }
+
+        .hero-deco {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .hero-deco-1 {
+            width: 500px; height: 500px;
+            background: var(--accent);
+            top: -150px; right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-deco-2 {
+            width: 300px; height: 300px;
+            background: var(--accent-light);
+            bottom: -80px; left: -60px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        .hero-deco-3 {
+            width: 150px; height: 150px;
+            background: #fff;
+            top: 40%; right: 25%;
+            animation: float 6s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -30px) scale(1.05); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 60px 0;
+        }
+
+        .hero-text { animation: fadeUp 1s ease forwards; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 168, 67, 0.15);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-family: var(--font-guj);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 28px;
+            animation: fadeUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-badge-dot {
+            width: 8px; height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .hero-title {
+            font-family: var(--font-guj);
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            color: var(--text-on-dark);
+            line-height: 1.3;
+            margin-bottom: 12px;
+            animation: fadeUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-title-en {
+            font-family: var(--font-display);
+            font-size: clamp(16px, 2vw, 22px);
+            font-weight: 400;
+            color: rgba(240, 236, 228, 0.5);
+            margin-bottom: 24px;
+            letter-spacing: 0.03em;
+            animation: fadeUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .hero-desc {
+            font-family: var(--font-guj);
+            font-size: 16px;
+            color: rgba(240, 236, 228, 0.75);
+            line-height: 1.8;
+            margin-bottom: 36px;
+            max-width: 520px;
+            animation: fadeUp 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            animation: fadeUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-guj);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary-dark);
+            box-shadow: 0 4px 20px rgba(212, 168, 67, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 168, 67, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-on-dark);
+            border: 1.5px solid rgba(240, 236, 228, 0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(212, 168, 67, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .btn svg {
+            width: 18px; height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover svg { transform: translateX(3px); }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            animation: fadeUp 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .hero-card-main {
+            position: relative;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        .hero-card-main::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--saffron), var(--accent));
+        }
+
+        .hero-school-image {
+            width: 100%;
+            height: 280px;
+            border-radius: var(--radius-md);
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-school-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .hero-school-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .hero-stat {
+            text-align: center;
+            padding: 16px 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .hero-stat-label {
+            font-family: var(--font-guj);
+            font-size: 12px;
+            color: rgba(240, 236, 228, 0.55);
+        }
+
+        .hero-float-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            box-shadow: var(--shadow-lg);
+            z-index: 3;
+            animation: floatCard 4s ease-in-out infinite;
+        }
+
+        .hero-float-card-1 { top: -10px; right: -20px; animation-delay: 0.5s; }
+        .hero-float-card-2 { bottom: 40px; left: -30px; animation-delay: 1.5s; }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .float-card-icon { font-size: 20px; margin-bottom: 4px; }
+        .float-card-title { font-family: var(--font-guj); font-size: 12px; font-weight: 600; color: var(--primary); }
+        .float-card-desc { font-size: 11px; color: var(--text-muted); }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================
+           SECTION SHARED
+           ============================================ */
+        .section { padding: 100px 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-guj);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-dark);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-tag::before,
+        .section-tag::after {
+            content: '';
+            width: 24px;
+            height: 1.5px;
+            background: var(--accent);
+        }
+
+        .section-title {
+            font-family: var(--font-guj);
+            font-size: clamp(26px, 3.5vw, 40px);
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .section-title-en {
+            font-family: var(--font-display);
+            font-size: clamp(14px, 1.5vw, 18px);
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .section-desc {
+            font-family: var(--font-guj);
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           INFO STRIP
+           ============================================ */
+        .info-strip {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-strip-inner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .info-strip-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 24px;
+            border-right: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .info-strip-item:last-child { border-right: none; }
+        .info-strip-item:hover { background: var(--bg-warm); }
+
+        .info-strip-icon {
+            width: 46px; height: 46px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-strip-icon svg { width: 22px; height: 22px; color: var(--accent); }
+
+        .info-strip-text h4 {
+            font-family: var(--font-guj);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .info-strip-text p {
+            font-family: var(--font-guj);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           ABOUT
+           ============================================ */
+        .about {
+            background:
+                radial-gradient(ellipse at 10% 90%, rgba(212, 168, 67, 0.04) 0%, transparent 50%),
+                var(--bg);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .about-image-area { position: relative; }
+
+        .about-image-main {
+            width: 100%;
+            height: 420px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .about-image-main:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-year-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+            border: 4px solid var(--bg);
+        }
+
+        .about-year-badge span:first-child {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1;
+        }
+
+        .about-year-badge span:last-child {
+            font-family: var(--font-guj);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            opacity: 0.7;
+        }
+
+        .about-content { padding-top: 10px; }
+        .about-content .section-tag { justify-content: flex-start; }
+        .about-content .section-title { text-align: left; }
+        .about-content .section-title-en { text-align: left; margin-bottom: 24px; }
+
+        .about-text {
+            font-family: var(--font-guj);
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 2;
+            margin-bottom: 32px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px;
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .about-feature:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-2px);
+        }
+
+        .about-feature-icon {
+            width: 36px; height: 36px;
+            background: linear-gradient(135deg, rgba(212, 168, 67, 0.15), rgba(212, 168, 67, 0.05));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .about-feature-text {
+            font-family: var(--font-guj);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           HIGHLIGHTS
+           ============================================ */
+        .highlights {
+            background: linear-gradient(175deg, var(--primary-dark) 0%, var(--primary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlights::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4a843' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .highlights .section-tag { color: var(--accent); }
+        .highlights .section-tag::before,
+        .highlights .section-tag::after { background: var(--accent); }
+        .highlights .section-title { color: var(--text-on-dark); }
+        .highlights .section-title-en { color: rgba(240, 236, 228, 0.5); }
+        .highlights .section-desc { color: rgba(240, 236, 228, 0.7); }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .highlight-card:hover::before { transform: scaleX(1); }
+
+        .highlight-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .highlight-icon {
+            width: 60px; height: 60px;
+            background: rgba(212, 168, 67, 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 28px;
+        }
+
+        .highlight-title {
+            font-family: var(--font-guj);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-on-dark);
+            margin-bottom: 8px;
+        }
+
+        .highlight-desc {
+            font-family: var(--font-guj);
+            font-size: 13px;
+            color: rgba(240, 236, 228, 0.55);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           STAFF
+           ============================================ */
+        .staff {
+            background:
+                radial-gradient(ellipse at 80% 80%, rgba(26, 71, 42, 0.03) 0%, transparent 50%),
+                var(--bg);
+        }
+
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .staff-card {
+            background: var(--surface);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .staff-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .staff-photo {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, var(--surface-alt), #e8e3d8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .staff-photo::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60px;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.8));
+        }
+
+        .staff-photo-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+        }
+
+        .staff-photo-placeholder svg { width: 48px; height: 48px; opacity: 0.3; }
+        .staff-photo-placeholder span { font-family: var(--font-guj); font-size: 12px; }
+
+        .staff-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .staff-name {
+            font-family: var(--font-guj);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+
+        .staff-role {
+            font-family: var(--font-guj);
+            font-size: 13px;
+            color: var(--accent-dark);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .staff-detail {
+            font-family: var(--font-guj);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           GALLERY
+           ============================================ */
+        .gallery { background: var(--bg-warm); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 220px);
+            gap: 16px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+            z-index: 2;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover .gallery-img img {
+            transform: scale(1.08);
+        }
+
+        /* Placeholder colors for gallery items without images */
+        .gallery-item:nth-child(3) .gallery-img {
+            background: linear-gradient(135deg, #e07b3a, #c66a2d);
+        }
+        .gallery-item:nth-child(4) .gallery-img {
+            background: linear-gradient(135deg, #3a7bd5, #2d5fa8);
+        }
+        .gallery-item:nth-child(5) .gallery-img {
+            background: linear-gradient(135deg, #8e44ad, #6c3483);
+        }
+
+        .gallery-img-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gallery-img-placeholder svg { width: 40px; height: 40px; color: rgba(255, 255, 255, 0.4); }
+        .gallery-img-placeholder span { font-family: var(--font-guj); font-size: 13px; color: rgba(255, 255, 255, 0.5); }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 40%, rgba(26, 71, 42, 0.85));
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        .gallery-overlay-text {
+            font-family: var(--font-guj);
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* ============================================
+           CONTACT
+           ============================================ */
+        .contact {
+            background:
+                radial-gradient(ellipse at 90% 10%, rgba(212, 168, 67, 0.05) 0%, transparent 50%),
+                var(--bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-card {
+            display: flex;
+            gap: 18px;
+            padding: 24px;
+            background: var(--surface);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        .contact-card-icon {
+            width: 52px; height: 52px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-card-icon svg { width: 24px; height: 24px; color: var(--accent); }
+
+        .contact-card-content h4 {
+            font-family: var(--font-guj);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .contact-card-content p {
+            font-family: var(--font-guj);
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .contact-card-content a {
+            color: var(--accent-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .contact-card-content a:hover { color: var(--primary); }
+
+        /* Map */
+        .map-wrapper {
+            margin-top: 20px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            height: 240px;
+            position: relative;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .map-link-overlay {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--accent);
+            font-family: var(--font-guj);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .map-link-overlay:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        /* Contact Form */
+        .contact-form-wrapper {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-form-title {
+            font-family: var(--font-guj);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .contact-form-subtitle {
+            font-family: var(--font-guj);
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-group { margin-bottom: 16px; }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-guj);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-guj);
+            font-size: 14px;
+            color: var(--text-primary);
+            background: var(--bg);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--text-on-dark);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-guj);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--primary-dark);
+            color: var(--text-on-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--saffron), var(--accent));
+        }
+
+        .footer-main {
+            padding: 64px 0 40px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-brand .logo-text-main {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-family: var(--font-guj);
+            font-size: 14px;
+            color: rgba(240, 236, 228, 0.6);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-social a {
+            width: 40px; height: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .footer-social a svg { width: 18px; height: 18px; color: rgba(240, 236, 228, 0.7); }
+        .footer-social a:hover svg { color: var(--primary-dark); }
+
+        .footer-col h4 {
+            font-family: var(--font-guj);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+
+        .footer-col ul li a {
+            font-family: var(--font-guj);
+            font-size: 14px;
+            color: rgba(240, 236, 228, 0.6);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col ul li a::before {
+            content: '';
+            width: 4px; height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .footer-col ul li a:hover::before { opacity: 1; }
+
+        .footer-bottom {
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-family: var(--font-guj);
+            font-size: 13px;
+            color: rgba(240, 236, 228, 0.4);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            font-family: var(--font-guj);
+            font-size: 13px;
+            color: rgba(240, 236, 228, 0.4);
+            transition: var(--transition);
+        }
+
+        .footer-bottom-links a:hover { color: var(--accent); }
+
+        /* ============================================
+           SCROLL TOP
+           ============================================ */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            width: 48px; height: 48px;
+            background: var(--primary);
+            color: var(--accent);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .scroll-top svg { width: 22px; height: 22px; }
+
+        /* ============================================
+           SCROLL REVEAL
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-desc { margin: 0 auto 36px; }
+            .hero-actions { justify-content: center; }
+
+            .hero-visual {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image-main { height: 300px; }
+            .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+            .staff-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 200px);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--primary-dark);
+                flex-direction: column;
+                justify-content: center;
+                gap: 4px;
+                padding: 20px;
+                transition: right 0.4s ease;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.open { right: 0; }
+
+            .nav-links a {
+                font-size: 16px;
+                padding: 12px 20px;
+                width: 100%;
+            }
+
+            .hamburger { display: flex; }
+
+            .info-strip-inner { grid-template-columns: repeat(2, 1fr); }
+            .info-strip-item { border-bottom: 1px solid var(--border); }
+            .info-strip-item:nth-child(2) { border-right: none; }
+
+            .hero-float-card { display: none; }
+            .about-features { grid-template-columns: 1fr; }
+            .highlights-grid { grid-template-columns: 1fr; }
+
+            .staff-grid {
+                grid-template-columns: 1fr;
+                max-width: 360px;
+                margin: 0 auto;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .gallery-item:nth-child(1) { grid-column: span 1; }
+            .gallery-item { height: 200px; }
+
+            .form-row { grid-template-columns: 1fr; }
+            .footer-main { grid-template-columns: 1fr; gap: 32px; }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section { padding: 70px 0; }
+        }
+
+        @media (max-width: 480px) {
+            .info-strip-inner { grid-template-columns: 1fr; }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .hero-stat-number { font-size: 22px; }
+            .contact-form-wrapper { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#home" class="logo-group">
+                <div class="logo-icon">
+                    <img src="logo.png" alt="???? ????? ???????? ???? ????">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-text-main">???? ????? ???????? ????</span>
+                    <span class="logo-text-sub">Govt. Primary School · Est. 1911</span>
+                </div>
+            </a>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">?????</a></li>
+                    <li><a href="#about">????? ????</a></li>
+                    <li><a href="#facilities">???????</a></li>
+                    <li><a href="#staff">?????? ????</a></li>
+                    <li><a href="#gallery">??????</a></li>
+                    <li><a href="#contact" class="nav-cta">??????</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="home">
+        <div class="hero-deco hero-deco-1"></div>
+        <div class="hero-deco hero-deco-2"></div>
+        <div class="hero-deco hero-deco-3"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        ???????: ???? · ???+ ?????? ???????? ??????
+                    </div>
+                    <h1 class="hero-title">???? ????? ???????? ????</h1>
+                    <p class="hero-title-en">Shri Dahida Government Primary School</p>
+                    <p class="hero-desc">
+                        ?????, ??????? ??? ???????? ?????? ???? ?????? ??? ?????? ?????? ???????? ??????? ???????? ??????. ???? ? ?? ? ???? ??????????? ??? ????? ?????? ??????.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#about" class="btn btn-primary">
+                            ??? ????
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            ?????? ???
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-card-main">
+                        <div class="hero-school-image">
+                            <img src="school6.jpg" alt="???? ????? ???????? ????">
+                        </div>
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <div class="hero-stat-number" data-count="113">0</div>
+                                <div class="hero-stat-label">?????? ??????</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-number" data-count="8">0</div>
+                                <div class="hero-stat-label">???? (?-?)</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="hero-stat-number" data-count="1000">0</div>
+                                <div class="hero-stat-label">????? ??????????+</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-float-card hero-float-card-1">
+                        <div class="float-card-icon">??</div>
+                        <div class="float-card-title">??????????? ??????</div>
+                        <div class="float-card-desc">????? ?????? ??????</div>
+                    </div>
+
+                    <div class="hero-float-card hero-float-card-2">
+                        <div class="float-card-icon">??</div>
+                        <div class="float-card-title">?????? ??????</div>
+                        <div class="float-card-desc">?????? ?????????</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== INFO STRIP ===================== -->
+    <div class="info-strip">
+        <div class="container">
+            <div class="info-strip-inner">
+                <div class="info-strip-item reveal">
+                    <div class="info-strip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/></svg>
+                    </div>
+                    <div class="info-strip-text">
+                        <h4>?????? ????</h4>
+                        <p>??????? ???????</p>
+                    </div>
+                </div>
+                <div class="info-strip-item reveal reveal-delay-1">
+                    <div class="info-strip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                    </div>
+                    <div class="info-strip-text">
+                        <h4>???? ? ?? ?</h4>
+                        <p>??????? ??????</p>
+                    </div>
+                </div>
+                <div class="info-strip-item reveal reveal-delay-2">
+                    <div class="info-strip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <div class="info-strip-text">
+                        <h4>????????</h4>
+                        <p>???????? ?????</p>
+                    </div>
+                </div>
+                <div class="info-strip-item reveal reveal-delay-3">
+                    <div class="info-strip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div class="info-strip-text">
+                        <h4>???+ ????</h4>
+                        <p>???????? ??????</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-area reveal">
+                    <div class="about-image-main">
+                        <img src="school7.jpg" alt="???? ????? ???????? ???? ?????">
+                    </div>
+                    <div class="about-year-badge">
+                        <span>1911</span>
+                        <span>???????</span>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <div class="section-tag">????? ????</div>
+                    <h2 class="section-title">???? ????? ???????? ????</h2>
+                    <p class="section-title-en">About Our School</p>
+
+                    <p class="about-text reveal">
+                        ????? ????? ??????? ??? ???????? ???????? ?????? ????? ?????? ???? ????? ???????? ???? ???? ??????? ??????? ????? ?????? ???? ??. ?????? ?? ????? ??? ????? ? ???? ??????? ?????????? ???????? ??? ???????? ??? ?? ??? ???? ????????????? ???????? ?????? ????????? ?????????? ?????? ??? ??? ??.
+                    </p>
+
+                    <p class="about-text reveal">
+                        ???? ?????? ??????? ?????? ????????? ???? ????? ?????? ????? ??. ??????? ?????? ?????? ?????? ??????? ???? ? ???? ???? ? ?? ? ?????? ????????????? ??????????? ??? ????? ?????? ?????? ?????? ??? ??. ???? ???????? ?????? ????? ??, ????? ???????????? ???????? ????? ?? ????? ????? ??????? ??? ??.
+                    </p>
+
+                    <div class="about-features reveal">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">??</div>
+                            <div class="about-feature-text">??????????? ???????? ??????????</div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">??</div>
+                            <div class="about-feature-text">?????? ??? ????????? ??????</div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">??</div>
+                            <div class="about-feature-text">????????? ??????</div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">?</div>
+                            <div class="about-feature-text">?????? ??? ??????? ??????????</div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">??</div>
+                            <div class="about-feature-text">??????? ???? ?????</div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">???</div>
+                            <div class="about-feature-text">?????? ??? ???????? ?????</div>
+                        </div>
+                    </div>
+
+                    <p class="about-text reveal" style="margin-bottom: 0; font-style: italic; border-left: 3px solid var(--accent); padding-left: 16px;">
+                        ?????? ???? ???????, ?????, ???????????? ??? ???????? ????????? ??????? ??????? ??? ?? ???? ??????????? ????????? ??????? ?????? ??? ???.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FACILITIES ===================== -->
+    <section class="section highlights" id="facilities">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">???????</div>
+                <h2 class="section-title">????? ?????? ???????</h2>
+                <p class="section-title-en">Our School Facilities</p>
+                <p class="section-desc">?????? ?????? ?????????? ?????? ??????? ????? ??????? ?????? ??</p>
+            </div>
+
+            <div class="highlights-grid">
+                <div class="highlight-card reveal">
+                    <div class="highlight-icon">??</div>
+                    <h3 class="highlight-title">????????? ???</h3>
+                    <p class="highlight-desc">????????? ?????? ?????? ??? ?????? ????????</p>
+                </div>
+                <div class="highlight-card reveal reveal-delay-1">
+                    <div class="highlight-icon">??</div>
+                    <h3 class="highlight-title">?????????</h3>
+                    <p class="highlight-desc">????? ??????? ??? ?????? ????????? ????</p>
+                </div>
+                <div class="highlight-card reveal reveal-delay-2">
+                    <div class="highlight-icon">??</div>
+                    <h3 class="highlight-title">?????? ?????</h3>
+                    <p class="highlight-desc">????? ??? ????? ????? ????? ??? ??? ??</p>
+                </div>
+                <div class="highlight-card reveal reveal-delay-3">
+                    <div class="highlight-icon">??</div>
+                    <h3 class="highlight-title">??????? ????</h3>
+                    <p class="highlight-desc">?????? ????? ??????? ??????? ????</p>
+                </div>
+                <div class="highlight-card reveal">
+                    <div class="highlight-icon">??</div>
+                    <h3 class="highlight-title">????? ????</h3>
+                    <p class="highlight-desc">?????? ????? ?????? ??????? ??????</p>
+                </div>
+                <div class="highlight-card reveal reveal-delay-1">
+                    <div class="highlight-icon">??</div>
+                    <h3 class="highlight-title">?????????? ??????????</h3>
+                    <p class="highlight-desc">????????, ????? ??? ????? ??? ??????????</p>
+                </div>
+                <div class="highlight-card reveal reveal-delay-2">
+                    <div class="highlight-icon">???</div>
+                    <h3 class="highlight-title">???????? ?????</h3>
+                    <p class="highlight-desc">CCTV ??? ??????? ???? ?????? ???? ?????</p>
+                </div>
+                <div class="highlight-card reveal reveal-delay-3">
+                    <div class="highlight-icon">??</div>
+                    <h3 class="highlight-title">?????? ??????</h3>
+                    <p class="highlight-desc">?????? ????????? ???? ??????</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== STAFF ===================== -->
+    <section class="section staff" id="staff">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">?????? ????</div>
+                <h2 class="section-title">????? ??????? ???????</h2>
+                <p class="section-title-en">Our Dedicated Staff</p>
+                <p class="section-desc">
+                    ?????? ??? ????????? ?????????? ????????????? ????????, ????? ??? ??????? ????????? ?????? ??? ??
+                </p>
+            </div>
+
+            <div class="staff-grid">
+                <div class="staff-card reveal">
+                    <div class="staff-photo">
+                        <div class="staff-photo-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <span>???? ????</span>
+                        </div>
+                    </div>
+                    <div class="staff-info">
+                        <h3 class="staff-name">??????????</h3>
+                        <p class="staff-role">????? ??????</p>
+                        <p class="staff-detail">???? ??????????</p>
+                    </div>
+                </div>
+
+                <div class="staff-card reveal reveal-delay-1">
+                    <div class="staff-photo">
+                        <div class="staff-photo-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <span>???? ????</span>
+                        </div>
+                    </div>
+                    <div class="staff-info">
+                        <h3 class="staff-name">?????????? - ?</h3>
+                        <p class="staff-role">?????? ??????</p>
+                        <p class="staff-detail">???? ? - ?</p>
+                    </div>
+                </div>
+
+                <div class="staff-card reveal reveal-delay-2">
+                    <div class="staff-photo">
+                        <div class="staff-photo-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <span>???? ????</span>
+                        </div>
+                    </div>
+                    <div class="staff-info">
+                        <h3 class="staff-name">?????????? - ?</h3>
+                        <p class="staff-role">??????</p>
+                        <p class="staff-detail">???? ? - ?</p>
+                    </div>
+                </div>
+
+                <div class="staff-card reveal reveal-delay-3">
+                    <div class="staff-photo">
+                        <div class="staff-photo-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <span>???? ????</span>
+                        </div>
+                    </div>
+                    <div class="staff-info">
+                        <h3 class="staff-name">?????????? - ?</h3>
+                        <p class="staff-role">??????</p>
+                        <p class="staff-detail">????????? / ??????</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">???? ??????</div>
+                <h2 class="section-title">?????? ?????? ?????</h2>
+                <p class="section-title-en">Memorable Moments</p>
+                <p class="section-desc">???????????, ?????????? ??? ?????? ???????????? ??????</p>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Main school photo -->
+                <div class="gallery-item reveal">
+                    <div class="gallery-img">
+                        <img src="school5.jpg" alt="???? ?????">
+                    </div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">???? ?????</span>
+                    </div>
+                </div>
+
+                <!-- Annual Day / Varshikotsav -->
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-img">
+                        <img src="student2.jpg" alt="???????????? ?????????">
+                    </div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">???????????? ?????????</span>
+                    </div>
+                </div>
+
+                <!-- Placeholder items 3, 4, 5 -->
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-img">
+                        <div class="gallery-img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <span>?????? ????</span>
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">?????? ???????</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-img">
+                        <div class="gallery-img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <span>??????????? ????</span>
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">??????????? ????</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-img">
+                        <div class="gallery-img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <span>???????</span>
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">??????? ?????????</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">??????</div>
+                <h2 class="section-title">????? ?????? ???</h2>
+                <p class="section-title-en">Get In Touch</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-cards">
+                    <div class="contact-card reveal">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="contact-card-content">
+                            <h4>???????</h4>
+                            <p>???? ????? ???????? ????,<br>???: ????? ???, ??: ??????,<br>??: ?????? - ??????<br>??????, ????</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card reveal reveal-delay-1">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        </div>
+                        <div class="contact-card-content">
+                            <h4>??? ????</h4>
+                            <p><a href="tel:+919824298001">+91 ??????????</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card reveal reveal-delay-2">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="contact-card-content">
+                            <h4>?????? ???</h4>
+                            <p>?????? ?? ??????<br>????? ??:?? - ????? ?:??</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card reveal reveal-delay-3">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="contact-card-content">
+                            <h4>?????</h4>
+                            <p><a href="mailto:shridahidaschool@gmail.com">shridahidaschool@gmail.com</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Google Map -->
+                    <div class="map-wrapper reveal">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d71.2!3d21.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDM2JzAwLjAiTiA3McKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <a href="https://maps.app.goo.gl/pH2MQHLoEAxr4NQS9?g_st=atm" target="_blank" rel="noopener noreferrer" class="map-link-overlay">
+                            ?? Google Maps ?? ???
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper reveal">
+                    <h3 class="contact-form-title">???? ????? ?????</h3>
+                    <p class="contact-form-subtitle">????? ?????? ???? ???? ???? ?????</p>
+
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">?????? ??? *</label>
+                                <input type="text" id="name" name="name" placeholder="??? ???? ???" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">??? ???? *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="??? ????" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">?????</label>
+                            <input type="email" id="email" name="email" placeholder="????? ???? ???">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">????</label>
+                            <select id="subject" name="subject">
+                                <option value="">???? ???? ???</option>
+                                <option value="admission">?????? ????</option>
+                                <option value="info">??????? ??????</option>
+                                <option value="complaint">??????</option>
+                                <option value="suggestion">????</option>
+                                <option value="other">????</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">????? ????? *</label>
+                            <textarea id="message" name="message" placeholder="???? ???..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">????? ????? ?</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="logo-text">
+                        <span class="logo-text-main">???? ????? ???????? ????</span>
+                    </div>
+                    <p>???? ?????? ????? ?????? ???????? ??? ????????? ?????? ????. ?????, ??????? ??? ???????? ?????? ????????????? ??? ????????? ?????? ?????.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#1a472a"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>???? ??????</h4>
+                    <ul>
+                        <li><a href="#home">?????</a></li>
+                        <li><a href="#about">????? ????</a></li>
+                        <li><a href="#facilities">???????</a></li>
+                        <li><a href="#staff">?????? ????</a></li>
+                        <li><a href="#gallery">??????</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>???????</h4>
+                    <ul>
+                        <li><a href="#facilities">????????? ???</a></li>
+                        <li><a href="#facilities">?????????</a></li>
+                        <li><a href="#facilities">?????? ?????</a></li>
+                        <li><a href="#facilities">??????? ????</a></li>
+                        <li><a href="#facilities">?????? ??????</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>?????? ??????</h4>
+                    <ul>
+                        <li><a href="#">????? ???, ??????</a></li>
+                        <li><a href="tel:+919824298001">+91 ??????????</a></li>
+                        <li><a href="mailto:shridahidaschool@gmail.com">????? ?????</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; ???? ???? ????? ???????? ????. ?????????? ????????.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">???????? ????</a>
+                    <a href="#">????? ??? ????</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <script>
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+
+        function updateActiveNav() {
+            const scrollY = window.pageYOffset + 120;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === '#' + sectionId) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function revealOnScroll() {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < window.innerHeight - 80) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.hero-stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current) + '+';
+                }, 16);
+            });
+        }
+
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) heroObserver.observe(heroStats);
+
+        // Scroll to Top
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 400) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !phone || !message) {
+                alert('???? ????? ??? ????? ?????? ???.');
+                return;
+            }
+
+            const btn = this.querySelector('.btn-submit');
+            const originalText = btn.textContent;
+            btn.textContent = '????? ???????! ?';
+            btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+                this.reset();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
