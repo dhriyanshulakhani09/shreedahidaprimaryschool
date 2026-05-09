@@ -3,12 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>???? ????? ???????? ???? | Shri Dahida Primary School</title>
+    <title>શ્રી દહિડા પ્રાથમિક શાળા | Shri Dahida Primary School</title>
+
+    <!-- FIX 1: Preconnect for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&family=Noto+Sans+Gujarati:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- FIX 2: Force Gujarati character subset with &subset=gujarati -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&family=Noto+Sans+Gujarati:wght@300;400;500;600;700&subset=gujarati&display=swap" rel="stylesheet">
+
+    <!-- FIX 3: Backup - Noto Sans Gujarati from jsDelivr CDN (if Google CDN fails) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-gujarati@5.0.0/index.min.css" onerror="">
+
     <style>
         /* ============================================
-           CSS CUSTOM PROPERTIES
+           FIX 4: @font-face with system fallback chain
+           ============================================ */
+        :root {
+            /* FIX 5: System fonts that support Gujarati on each platform */
+            --font-guj: 'Noto Sans Gujarati',
+                         'Gujarati Sangam MN',        /* macOS */
+                         'Nirmala UI',                 /* Windows 8+ */
+                         'Lohit Gujarati',             /* Linux */
+                         'Gujarati MT',                /* Older macOS */
+                         'Arial Unicode MS',           /* Universal fallback */
+                         sans-serif;
+
+            --font-display: 'Playfair Display',
+                            'Nirmala UI',
+                            'Gujarati Sangam MN',
+                            Georgia,
+                            serif;
+
+            --font-body: 'Source Serif 4',
+                         'Noto Sans Gujarati',
+                         'Nirmala UI',
+                         'Gujarati Sangam MN',
+                         serif;
+        }
+
+        /* ============================================
+           CSS CUSTOM PROPERTIES (rest unchanged)
            ============================================ */
         :root {
             --bg: #faf7f0;
@@ -36,9 +71,6 @@
             --radius-md: 14px;
             --radius-lg: 22px;
             --radius-xl: 32px;
-            --font-display: 'Playfair Display', Georgia, serif;
-            --font-body: 'Source Serif 4', 'Noto Sans Gujarati', serif;
-            --font-guj: 'Noto Sans Gujarati', sans-serif;
             --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
@@ -54,15 +86,20 @@
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 80px;
+            /* FIX 6: Set Gujarati language hint for browser rendering */
+            lang: gu;
         }
 
         body {
-            font-family: var(--font-body);
+            font-family: var(--font-guj);
             background: var(--bg);
             color: var(--text-primary);
             line-height: 1.7;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            /* FIX 7: Ensure text rendering supports complex scripts */
+            -webkit-text-size-adjust: 100%;
+            text-rendering: optimizeLegibility;
         }
 
         body::before {
@@ -80,15 +117,8 @@
             padding: 0 24px;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
 
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
@@ -100,9 +130,7 @@
            ============================================ */
         .header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
             background: rgba(26, 71, 42, 0.95);
             backdrop-filter: blur(20px);
@@ -133,8 +161,7 @@
         }
 
         .logo-icon {
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
@@ -143,15 +170,11 @@
         }
 
         .logo-icon img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
         }
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
+        .logo-text { display: flex; flex-direction: column; }
 
         .logo-text-main {
             font-family: var(--font-guj);
@@ -159,11 +182,10 @@
             font-weight: 700;
             color: var(--accent);
             line-height: 1.2;
-            letter-spacing: 0.02em;
         }
 
         .logo-text-sub {
-            font-family: var(--font-body);
+            font-family: var(--font-display);
             font-size: 11px;
             color: rgba(240, 236, 228, 0.6);
             letter-spacing: 0.08em;
@@ -215,8 +237,7 @@
         }
 
         .hamburger span {
-            width: 26px;
-            height: 2.5px;
+            width: 26px; height: 2.5px;
             background: var(--accent);
             border-radius: 2px;
             transition: var(--transition);
@@ -244,10 +265,8 @@
 
         .hero::before {
             content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a843' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a843' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             opacity: 0.6;
         }
 
@@ -285,8 +304,7 @@
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
@@ -342,7 +360,6 @@
             font-weight: 400;
             color: rgba(240, 236, 228, 0.5);
             margin-bottom: 24px;
-            letter-spacing: 0.03em;
             animation: fadeUp 1s ease 0.4s forwards;
             opacity: 0;
         }
@@ -378,8 +395,6 @@
             cursor: pointer;
             border: none;
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-primary {
@@ -403,18 +418,12 @@
         .btn-outline:hover {
             border-color: var(--accent);
             color: var(--accent);
-            background: rgba(212, 168, 67, 0.05);
             transform: translateY(-2px);
         }
 
-        .btn svg {
-            width: 18px; height: 18px;
-            transition: transform 0.3s ease;
-        }
-
+        .btn svg { width: 18px; height: 18px; transition: transform 0.3s ease; }
         .btn:hover svg { transform: translateX(3px); }
 
-        /* Hero Visual */
         .hero-visual {
             position: relative;
             animation: fadeUp 1s ease 0.5s forwards;
@@ -440,24 +449,19 @@
         }
 
         .hero-school-image {
-            width: 100%;
-            height: 280px;
+            width: 100%; height: 280px;
             border-radius: var(--radius-md);
             margin-bottom: 28px;
-            position: relative;
             overflow: hidden;
         }
 
         .hero-school-image img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
 
-        .hero-school-image:hover img {
-            transform: scale(1.05);
-        }
+        .hero-school-image:hover img { transform: scale(1.05); }
 
         .hero-stats {
             display: grid;
@@ -491,7 +495,6 @@
         .hero-float-card {
             position: absolute;
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
             border-radius: var(--radius-md);
             padding: 14px 18px;
             box-shadow: var(--shadow-lg);
@@ -520,11 +523,7 @@
            SECTION SHARED
            ============================================ */
         .section { padding: 100px 0; }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 64px;
-        }
+        .section-header { text-align: center; margin-bottom: 64px; }
 
         .section-tag {
             display: inline-flex;
@@ -535,15 +534,13 @@
             font-weight: 600;
             color: var(--accent-dark);
             letter-spacing: 0.05em;
-            text-transform: uppercase;
             margin-bottom: 16px;
         }
 
         .section-tag::before,
         .section-tag::after {
             content: '';
-            width: 24px;
-            height: 1.5px;
+            width: 24px; height: 1.5px;
             background: var(--accent);
         }
 
@@ -579,14 +576,12 @@
         .info-strip {
             background: var(--surface);
             border-bottom: 1px solid var(--border);
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
         }
 
         .info-strip-inner {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 0;
         }
 
         .info-strip-item {
@@ -646,31 +641,24 @@
         .about-image-area { position: relative; }
 
         .about-image-main {
-            width: 100%;
-            height: 420px;
+            width: 100%; height: 420px;
             border-radius: var(--radius-lg);
             overflow: hidden;
-            position: relative;
             box-shadow: var(--shadow-lg);
         }
 
         .about-image-main img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             transition: transform 0.8s ease;
         }
 
-        .about-image-main:hover img {
-            transform: scale(1.05);
-        }
+        .about-image-main:hover img { transform: scale(1.05); }
 
         .about-year-badge {
             position: absolute;
-            bottom: -20px;
-            right: -20px;
-            width: 120px;
-            height: 120px;
+            bottom: -20px; right: -20px;
+            width: 120px; height: 120px;
             background: var(--accent);
             border-radius: 50%;
             display: flex;
@@ -764,10 +752,8 @@
 
         .highlights::before {
             content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4a843' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4a843' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
         }
 
         .highlights .section-tag { color: var(--accent); }
@@ -781,8 +767,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
         }
 
         .highlight-card {
@@ -871,8 +856,7 @@
         }
 
         .staff-photo {
-            width: 100%;
-            height: 240px;
+            width: 100%; height: 240px;
             background: linear-gradient(135deg, var(--surface-alt), #e8e3d8);
             display: flex;
             align-items: center;
@@ -900,10 +884,7 @@
         .staff-photo-placeholder svg { width: 48px; height: 48px; opacity: 0.3; }
         .staff-photo-placeholder span { font-family: var(--font-guj); font-size: 12px; }
 
-        .staff-info {
-            padding: 20px;
-            text-align: center;
-        }
+        .staff-info { padding: 20px; text-align: center; }
 
         .staff-name {
             font-family: var(--font-guj);
@@ -959,38 +940,24 @@
         }
 
         .gallery-img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            gap: 10px;
-            transition: var(--transition);
             overflow: hidden;
         }
 
         .gallery-img img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
 
-        .gallery-item:hover .gallery-img img {
-            transform: scale(1.08);
-        }
+        .gallery-item:hover .gallery-img img { transform: scale(1.08); }
 
-        /* Placeholder colors for gallery items without images */
-        .gallery-item:nth-child(3) .gallery-img {
-            background: linear-gradient(135deg, #e07b3a, #c66a2d);
-        }
-        .gallery-item:nth-child(4) .gallery-img {
-            background: linear-gradient(135deg, #3a7bd5, #2d5fa8);
-        }
-        .gallery-item:nth-child(5) .gallery-img {
-            background: linear-gradient(135deg, #8e44ad, #6c3483);
-        }
+        .gallery-item:nth-child(3) .gallery-img { background: linear-gradient(135deg, #e07b3a, #c66a2d); }
+        .gallery-item:nth-child(4) .gallery-img { background: linear-gradient(135deg, #3a7bd5, #2d5fa8); }
+        .gallery-item:nth-child(5) .gallery-img { background: linear-gradient(135deg, #8e44ad, #6c3483); }
 
         .gallery-img-placeholder {
             display: flex;
@@ -1003,8 +970,7 @@
         .gallery-img-placeholder span { font-family: var(--font-guj); font-size: 13px; color: rgba(255, 255, 255, 0.5); }
 
         .gallery-overlay {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: linear-gradient(transparent 40%, rgba(26, 71, 42, 0.85));
             opacity: 0;
             transition: var(--transition);
@@ -1095,7 +1061,6 @@
 
         .contact-card-content a:hover { color: var(--primary); }
 
-        /* Map */
         .map-wrapper {
             margin-top: 20px;
             border-radius: var(--radius-md);
@@ -1105,16 +1070,11 @@
             position: relative;
         }
 
-        .map-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+        .map-wrapper iframe { width: 100%; height: 100%; border: 0; }
 
         .map-link-overlay {
             position: absolute;
-            bottom: 12px;
-            left: 50%;
+            bottom: 12px; left: 50%;
             transform: translateX(-50%);
             background: var(--primary);
             color: var(--accent);
@@ -1134,7 +1094,6 @@
             transform: translateX(-50%) translateY(-2px);
         }
 
-        /* Contact Form */
         .contact-form-wrapper {
             background: var(--surface);
             border-radius: var(--radius-lg);
@@ -1162,7 +1121,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
-            margin-bottom: 16px;
         }
 
         .form-group { margin-bottom: 16px; }
@@ -1198,10 +1156,7 @@
             box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1);
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
+        .form-group textarea { resize: vertical; min-height: 100px; }
 
         .btn-submit {
             width: 100%;
@@ -1248,10 +1203,7 @@
             gap: 40px;
         }
 
-        .footer-brand .logo-text-main {
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
+        .footer-brand .logo-text-main { font-size: 18px; margin-bottom: 12px; }
 
         .footer-brand p {
             font-family: var(--font-guj);
@@ -1261,10 +1213,7 @@
             margin-bottom: 20px;
         }
 
-        .footer-social {
-            display: flex;
-            gap: 10px;
-        }
+        .footer-social { display: flex; gap: 10px; }
 
         .footer-social a {
             width: 40px; height: 40px;
@@ -1276,11 +1225,7 @@
             transition: var(--transition);
         }
 
-        .footer-social a:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-        }
-
+        .footer-social a:hover { background: var(--accent); transform: translateY(-2px); }
         .footer-social a svg { width: 18px; height: 18px; color: rgba(240, 236, 228, 0.7); }
         .footer-social a:hover svg { color: var(--primary-dark); }
 
@@ -1314,11 +1259,7 @@
             transition: var(--transition);
         }
 
-        .footer-col ul li a:hover {
-            color: var(--accent);
-            transform: translateX(4px);
-        }
-
+        .footer-col ul li a:hover { color: var(--accent); transform: translateX(4px); }
         .footer-col ul li a:hover::before { opacity: 1; }
 
         .footer-bottom {
@@ -1337,10 +1278,7 @@
             color: rgba(240, 236, 228, 0.4);
         }
 
-        .footer-bottom-links {
-            display: flex;
-            gap: 24px;
-        }
+        .footer-bottom-links { display: flex; gap: 24px; }
 
         .footer-bottom-links a {
             font-family: var(--font-guj);
@@ -1374,18 +1312,8 @@
             z-index: 999;
         }
 
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .scroll-top:hover {
-            background: var(--accent);
-            color: var(--primary-dark);
-            transform: translateY(-3px);
-        }
-
+        .scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .scroll-top:hover { background: var(--accent); color: var(--primary-dark); transform: translateY(-3px); }
         .scroll-top svg { width: 22px; height: 22px; }
 
         /* ============================================
@@ -1397,53 +1325,25 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* ============================================
            RESPONSIVE
            ============================================ */
         @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
+            .hero-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .hero-desc { margin: 0 auto 36px; }
             .hero-actions { justify-content: center; }
-
-            .hero-visual {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
+            .hero-visual { max-width: 500px; margin: 0 auto; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
             .about-image-main { height: 300px; }
             .highlights-grid { grid-template-columns: repeat(2, 1fr); }
             .staff-grid { grid-template-columns: repeat(2, 1fr); }
-
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(3, 200px);
-            }
-
-            .gallery-item:nth-child(1) {
-                grid-column: span 2;
-                grid-row: span 1;
-            }
-
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 200px); }
+            .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
             .contact-grid { grid-template-columns: 1fr; }
             .footer-main { grid-template-columns: 1fr 1fr; }
         }
@@ -1451,10 +1351,8 @@
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
+                top: 0; right: -100%;
+                width: 280px; height: 100vh;
                 background: var(--primary-dark);
                 flex-direction: column;
                 justify-content: center;
@@ -1465,56 +1363,27 @@
             }
 
             .nav-links.open { right: 0; }
-
-            .nav-links a {
-                font-size: 16px;
-                padding: 12px 20px;
-                width: 100%;
-            }
-
+            .nav-links a { font-size: 16px; padding: 12px 20px; width: 100%; }
             .hamburger { display: flex; }
-
             .info-strip-inner { grid-template-columns: repeat(2, 1fr); }
             .info-strip-item { border-bottom: 1px solid var(--border); }
             .info-strip-item:nth-child(2) { border-right: none; }
-
             .hero-float-card { display: none; }
             .about-features { grid-template-columns: 1fr; }
             .highlights-grid { grid-template-columns: 1fr; }
-
-            .staff-grid {
-                grid-template-columns: 1fr;
-                max-width: 360px;
-                margin: 0 auto;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-
+            .staff-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+            .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
             .gallery-item:nth-child(1) { grid-column: span 1; }
             .gallery-item { height: 200px; }
-
             .form-row { grid-template-columns: 1fr; }
             .footer-main { grid-template-columns: 1fr; gap: 32px; }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-
+            .footer-bottom { flex-direction: column; text-align: center; }
             .section { padding: 70px 0; }
         }
 
         @media (max-width: 480px) {
             .info-strip-inner { grid-template-columns: 1fr; }
-
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-            }
-
+            .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
             .hero-stat-number { font-size: 22px; }
             .contact-form-wrapper { padding: 24px; }
         }
@@ -1527,21 +1396,21 @@
         <div class="header-inner">
             <a href="#home" class="logo-group">
                 <div class="logo-icon">
-                    <img src="logo.png" alt="???? ????? ???????? ???? ????">
+                    <img src="logo.png" alt="શ્રી દહિડા પ્રાથમિક શાળા લોગો">
                 </div>
                 <div class="logo-text">
-                    <span class="logo-text-main">???? ????? ???????? ????</span>
-                    <span class="logo-text-sub">Govt. Primary School � Est. 1911</span>
+                    <span class="logo-text-main">શ્રી દહિડા પ્રાથમિક શાળા</span>
+                    <span class="logo-text-sub">Govt. Primary School · Est. 1911</span>
                 </div>
             </a>
             <nav>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#home" class="active">?????</a></li>
-                    <li><a href="#about">????? ????</a></li>
-                    <li><a href="#facilities">???????</a></li>
-                    <li><a href="#staff">?????? ????</a></li>
-                    <li><a href="#gallery">??????</a></li>
-                    <li><a href="#contact" class="nav-cta">??????</a></li>
+                    <li><a href="#home" class="active">શરૂઆત</a></li>
+                    <li><a href="#about">અમારા વિશે</a></li>
+                    <li><a href="#facilities">સુવિધાઓ</a></li>
+                    <li><a href="#staff">શિક્ષક મંડળ</a></li>
+                    <li><a href="#gallery">ગેલેરી</a></li>
+                    <li><a href="#contact" class="nav-cta">સંપર્ક</a></li>
                 </ul>
             </nav>
             <div class="hamburger" id="hamburger">
@@ -1563,20 +1432,20 @@
                 <div class="hero-text">
                     <div class="hero-badge">
                         <span class="hero-badge-dot"></span>
-                        ???????: ???? � ???+ ?????? ???????? ??????
+                        સ્થાપિત: ૧૯૧૧ · ૧૦૦+ વર્ષની શૈક્ષણિક પરંપરા
                     </div>
-                    <h1 class="hero-title">???? ????? ???????? ????</h1>
+                    <h1 class="hero-title">શ્રી દહિડા પ્રાથમિક શાળા</h1>
                     <p class="hero-title-en">Shri Dahida Government Primary School</p>
                     <p class="hero-desc">
-                        ?????, ??????? ??? ???????? ?????? ???? ?????? ??? ?????? ?????? ???????? ??????? ???????? ??????. ???? ? ?? ? ???? ??????????? ??? ????? ?????? ??????.
+                        જ્ઞાન, સંસ્કાર અને પ્રગતિના માર્ગે દરેક બાળકને આગળ વધારતી અમરેલી જિલ્લાની ગૌરવસભર શૈક્ષણિક સંસ્થા. ધોરણ ૧ થી ૮ સુધી ગુણવત્તાસભર અને મૂલ્ય આધારિત શિક્ષણ.
                     </p>
                     <div class="hero-actions">
                         <a href="#about" class="btn btn-primary">
-                            ??? ????
+                            વધુ જાણો
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
                         <a href="#contact" class="btn btn-outline">
-                            ?????? ???
+                            સંપર્ક કરો
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                         </a>
                     </div>
@@ -1585,34 +1454,34 @@
                 <div class="hero-visual">
                     <div class="hero-card-main">
                         <div class="hero-school-image">
-                            <img src="school6.jpg" alt="???? ????? ???????? ????">
+                            <img src="school6.jpg" alt="શ્રી દહિડા પ્રાથમિક શાળા">
                         </div>
                         <div class="hero-stats">
                             <div class="hero-stat">
                                 <div class="hero-stat-number" data-count="113">0</div>
-                                <div class="hero-stat-label">?????? ??????</div>
+                                <div class="hero-stat-label">વર્ષનો ઇતિહાસ</div>
                             </div>
                             <div class="hero-stat">
                                 <div class="hero-stat-number" data-count="8">0</div>
-                                <div class="hero-stat-label">???? (?-?)</div>
+                                <div class="hero-stat-label">ધોરણ (૧-૮)</div>
                             </div>
                             <div class="hero-stat">
                                 <div class="hero-stat-number" data-count="1000">0</div>
-                                <div class="hero-stat-label">????? ??????????+</div>
+                                <div class="hero-stat-label">પૂર્વ વિદ્યાર્થી+</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="hero-float-card hero-float-card-1">
-                        <div class="float-card-icon">??</div>
-                        <div class="float-card-title">??????????? ??????</div>
-                        <div class="float-card-desc">????? ?????? ??????</div>
+                        <div class="float-card-icon">🏆</div>
+                        <div class="float-card-title">ગુણવત્તાસભર શિક્ષણ</div>
+                        <div class="float-card-desc">મૂલ્ય આધારિત શિક્ષણ</div>
                     </div>
 
                     <div class="hero-float-card hero-float-card-2">
-                        <div class="float-card-icon">??</div>
-                        <div class="float-card-title">?????? ??????</div>
-                        <div class="float-card-desc">?????? ?????????</div>
+                        <div class="float-card-icon">💻</div>
+                        <div class="float-card-title">ડિજિટલ શિક્ષણ</div>
+                        <div class="float-card-desc">આધુનિક ટેકનોલોજી</div>
                     </div>
                 </div>
             </div>
@@ -1628,8 +1497,8 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/></svg>
                     </div>
                     <div class="info-strip-text">
-                        <h4>?????? ????</h4>
-                        <p>??????? ???????</p>
+                        <h4>સરકારી શાળા</h4>
+                        <p>માન્યતા પ્રાપ્ત</p>
                     </div>
                 </div>
                 <div class="info-strip-item reveal reveal-delay-1">
@@ -1637,8 +1506,8 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
                     </div>
                     <div class="info-strip-text">
-                        <h4>???? ? ?? ?</h4>
-                        <p>??????? ??????</p>
+                        <h4>ધોરણ ૧ થી ૮</h4>
+                        <p>ગુજરાતી માધ્યમ</p>
                     </div>
                 </div>
                 <div class="info-strip-item reveal reveal-delay-2">
@@ -1646,8 +1515,8 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
                     </div>
                     <div class="info-strip-text">
-                        <h4>????????</h4>
-                        <p>???????? ?????</p>
+                        <h4>સહશિક્ષણ</h4>
+                        <p>સર્વાંગી વિકાસ</p>
                     </div>
                 </div>
                 <div class="info-strip-item reveal reveal-delay-3">
@@ -1655,8 +1524,8 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                     </div>
                     <div class="info-strip-text">
-                        <h4>???+ ????</h4>
-                        <p>???????? ??????</p>
+                        <h4>૧૦૦+ વર્ષ</h4>
+                        <p>શિક્ષણની પરંપરા</p>
                     </div>
                 </div>
             </div>
@@ -1669,56 +1538,56 @@
             <div class="about-grid">
                 <div class="about-image-area reveal">
                     <div class="about-image-main">
-                        <img src="school7.jpg" alt="???? ????? ???????? ???? ?????">
+                        <img src="school7.jpg" alt="શ્રી દહિડા પ્રાથમિક શાળા ઇમારત">
                     </div>
                     <div class="about-year-badge">
                         <span>1911</span>
-                        <span>???????</span>
+                        <span>સ્થાપના</span>
                     </div>
                 </div>
 
                 <div class="about-content">
-                    <div class="section-tag">????? ????</div>
-                    <h2 class="section-title">???? ????? ???????? ????</h2>
+                    <div class="section-tag">અમારા વિશે</div>
+                    <h2 class="section-title">શ્રી દહિડા પ્રાથમિક શાળા</h2>
                     <p class="section-title-en">About Our School</p>
 
                     <p class="about-text reveal">
-                        ????? ????? ??????? ??? ???????? ???????? ?????? ????? ?????? ???? ????? ???????? ???? ???? ??????? ??????? ????? ?????? ???? ??. ?????? ?? ????? ??? ????? ? ???? ??????? ?????????? ???????? ??? ???????? ??? ?? ??? ???? ????????????? ???????? ?????? ????????? ?????????? ?????? ??? ??? ??.
+                        દહિડા ગામની ગૌરવસભર અને ઐતિહાસિક શૈક્ષણિક સંસ્થા તરીકે ઓળખાતી શ્રી દહિડા પ્રાથમિક શાળા વર્ષ ૧૯૧૧માં સ્થાપિત થયેલી સરકારી શાળા છે. છેલ્લા એક સદીથી વધુ સમયથી આ શાળા ગ્રામ્ય વિસ્તારમાં શિક્ષણનો દીપ પ્રગટાવી રહી છે અને અનેક વિદ્યાર્થીઓના ભવિષ્યને ઉજ્જવળ બનાવવામાં મહત્વપૂર્ણ યોગદાન આપી રહી છે.
                     </p>
 
                     <p class="about-text reveal">
-                        ???? ?????? ??????? ?????? ????????? ???? ????? ?????? ????? ??. ??????? ?????? ?????? ?????? ??????? ???? ? ???? ???? ? ?? ? ?????? ????????????? ??????????? ??? ????? ?????? ?????? ?????? ??? ??. ???? ???????? ?????? ????? ??, ????? ???????????? ???????? ????? ?? ????? ????? ??????? ??? ??.
+                        શાળા ગુજરાત રાજ્યના અમરેલી જિલ્લામાં આવેલ દહિડા ગામમાં સ્થિત છે. ગુજરાતી માધ્યમ દ્વારા શિક્ષણ આપવામાં આવતી આ શાળા ધોરણ ૧ થી ૮ સુધીના વિદ્યાર્થીઓને ગુણવત્તાસભર અને મૂલ્ય આધારિત શિક્ષણ પ્રદાન કરે છે.
                     </p>
 
                     <div class="about-features reveal">
                         <div class="about-feature">
-                            <div class="about-feature-icon">??</div>
-                            <div class="about-feature-text">??????????? ???????? ??????????</div>
+                            <div class="about-feature-icon">📖</div>
+                            <div class="about-feature-text">ગુણવત્તાસભર શૈક્ષણિક અભ્યાસક્રમ</div>
                         </div>
                         <div class="about-feature">
-                            <div class="about-feature-icon">??</div>
-                            <div class="about-feature-text">?????? ??? ????????? ??????</div>
+                            <div class="about-feature-icon">💻</div>
+                            <div class="about-feature-text">ડિજિટલ અને કમ્પ્યુટર શિક્ષણ</div>
                         </div>
                         <div class="about-feature">
-                            <div class="about-feature-icon">??</div>
-                            <div class="about-feature-text">????????? ??????</div>
+                            <div class="about-feature-icon">📚</div>
+                            <div class="about-feature-text">પુસ્તકાલય સુવિધા</div>
                         </div>
                         <div class="about-feature">
-                            <div class="about-feature-icon">?</div>
-                            <div class="about-feature-text">?????? ??? ??????? ??????????</div>
+                            <div class="about-feature-icon">⚽</div>
+                            <div class="about-feature-text">રમતગમત અને સહપાઠ્ય પ્રવૃત્તિઓ</div>
                         </div>
                         <div class="about-feature">
-                            <div class="about-feature-icon">??</div>
-                            <div class="about-feature-text">??????? ???? ?????</div>
+                            <div class="about-feature-icon">🍛</div>
+                            <div class="about-feature-text">મધ્યાહન ભોજન યોજના</div>
                         </div>
                         <div class="about-feature">
-                            <div class="about-feature-icon">???</div>
-                            <div class="about-feature-text">?????? ??? ???????? ?????</div>
+                            <div class="about-feature-icon">🛡️</div>
+                            <div class="about-feature-text">સ્વચ્છ અને સુરક્ષિત પરિસર</div>
                         </div>
                     </div>
 
                     <p class="about-text reveal" style="margin-bottom: 0; font-style: italic; border-left: 3px solid var(--accent); padding-left: 16px;">
-                        ?????? ???? ???????, ?????, ???????????? ??? ???????? ????????? ??????? ??????? ??? ?? ???? ??????????? ????????? ??????? ?????? ??? ???.
+                        શિક્ષણ સાથે સંસ્કાર, શિસ્ત, રાષ્ટ્રપ્રેમ અને માનવતાના મૂલ્યોનું સંવર્ધન કરવામાં આવે છે.
                     </p>
                 </div>
             </div>
@@ -1729,52 +1598,52 @@
     <section class="section highlights" id="facilities">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">???????</div>
-                <h2 class="section-title">????? ?????? ???????</h2>
+                <div class="section-tag">સુવિધાઓ</div>
+                <h2 class="section-title">અમારી શાળાની સુવિધાઓ</h2>
                 <p class="section-title-en">Our School Facilities</p>
-                <p class="section-desc">?????? ?????? ?????????? ?????? ??????? ????? ??????? ?????? ??</p>
+                <p class="section-desc">આધુનિક શિક્ષણ વ્યવસ્થાને અનુરૂપ શાળામાં વિવિધ સુવિધાઓ ઉપલબ્ધ છે</p>
             </div>
 
             <div class="highlights-grid">
                 <div class="highlight-card reveal">
-                    <div class="highlight-icon">??</div>
-                    <h3 class="highlight-title">????????? ???</h3>
-                    <p class="highlight-desc">????????? ?????? ?????? ??? ?????? ????????</p>
+                    <div class="highlight-icon">💻</div>
+                    <h3 class="highlight-title">કમ્પ્યુટર લેબ</h3>
+                    <p class="highlight-desc">કમ્પ્યુટર આધારિત અભ્યાસ અને ડિજિટલ સાક્ષરતા</p>
                 </div>
                 <div class="highlight-card reveal reveal-delay-1">
-                    <div class="highlight-icon">??</div>
-                    <h3 class="highlight-title">?????????</h3>
-                    <p class="highlight-desc">????? ??????? ??? ?????? ????????? ????</p>
+                    <div class="highlight-icon">📚</div>
+                    <h3 class="highlight-title">પુસ્તકાલય</h3>
+                    <p class="highlight-desc">વિવિધ પુસ્તકો અને અભ્યાસ સામગ્રીથી સજ્જ</p>
                 </div>
                 <div class="highlight-card reveal reveal-delay-2">
-                    <div class="highlight-icon">??</div>
-                    <h3 class="highlight-title">?????? ?????</h3>
-                    <p class="highlight-desc">????? ??? ????? ????? ????? ??? ??? ??</p>
+                    <div class="highlight-icon">🏃</div>
+                    <h3 class="highlight-title">રમતનું મેદાન</h3>
+                    <p class="highlight-desc">વિશાળ રમત મેદાન જ્યાં બાળકો રમી શકે છે</p>
                 </div>
                 <div class="highlight-card reveal reveal-delay-3">
-                    <div class="highlight-icon">??</div>
-                    <h3 class="highlight-title">??????? ????</h3>
-                    <p class="highlight-desc">?????? ????? ??????? ??????? ????</p>
+                    <div class="highlight-icon">🍛</div>
+                    <h3 class="highlight-title">મધ્યાહન ભોજન</h3>
+                    <p class="highlight-desc">સરકારી યોજના અંતર્ગત પૌષ્ટિક ભોજન</p>
                 </div>
                 <div class="highlight-card reveal">
-                    <div class="highlight-icon">??</div>
-                    <h3 class="highlight-title">????? ????</h3>
-                    <p class="highlight-desc">?????? ????? ?????? ??????? ??????</p>
+                    <div class="highlight-icon">💧</div>
+                    <h3 class="highlight-title">શુદ્ધ પાણી</h3>
+                    <p class="highlight-desc">પીવાના શુદ્ધ પાણીની સંપૂર્ણ સુવિધા</p>
                 </div>
                 <div class="highlight-card reveal reveal-delay-1">
-                    <div class="highlight-icon">??</div>
-                    <h3 class="highlight-title">?????????? ??????????</h3>
-                    <p class="highlight-desc">????????, ????? ??? ????? ??? ??????????</p>
+                    <div class="highlight-icon">🎨</div>
+                    <h3 class="highlight-title">સર્જનાત્મક પ્રવૃત્તિઓ</h3>
+                    <p class="highlight-desc">ચિત્રકળા, સંગીત અને વિવિધ કળા પ્રવૃત્તિઓ</p>
                 </div>
                 <div class="highlight-card reveal reveal-delay-2">
-                    <div class="highlight-icon">???</div>
-                    <h3 class="highlight-title">???????? ?????</h3>
-                    <p class="highlight-desc">CCTV ??? ??????? ???? ?????? ???? ?????</p>
+                    <div class="highlight-icon">🛡️</div>
+                    <h3 class="highlight-title">સુરક્ષિત પરિસર</h3>
+                    <p class="highlight-desc">CCTV અને સુરક્ષા સાથે સ્વચ્છ શાળા પરિસર</p>
                 </div>
                 <div class="highlight-card reveal reveal-delay-3">
-                    <div class="highlight-icon">??</div>
-                    <h3 class="highlight-title">?????? ??????</h3>
-                    <p class="highlight-desc">?????? ????????? ???? ??????</p>
+                    <div class="highlight-icon">📖</div>
+                    <h3 class="highlight-title">ડિજિટલ શિક્ષણ</h3>
+                    <p class="highlight-desc">આધુનિક ટેકનોલોજી સાથે શિક્ષણ</p>
                 </div>
             </div>
         </div>
@@ -1784,12 +1653,10 @@
     <section class="section staff" id="staff">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">?????? ????</div>
-                <h2 class="section-title">????? ??????? ???????</h2>
+                <div class="section-tag">શિક્ષક મંડળ</div>
+                <h2 class="section-title">અમારા સમર્પિત શિક્ષકો</h2>
                 <p class="section-title-en">Our Dedicated Staff</p>
-                <p class="section-desc">
-                    ?????? ??? ????????? ?????????? ????????????? ????????, ????? ??? ??????? ????????? ?????? ??? ??
-                </p>
+                <p class="section-desc">અનુભવી અને પ્રતિબદ્ધ શિક્ષકમંડળ વિદ્યાર્થીઓને શિક્ષણ આપે છે</p>
             </div>
 
             <div class="staff-grid">
@@ -1797,13 +1664,13 @@
                     <div class="staff-photo">
                         <div class="staff-photo-placeholder">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                            <span>???? ????</span>
+                            <span>ફોટો મૂકો</span>
                         </div>
                     </div>
                     <div class="staff-info">
-                        <h3 class="staff-name">??????????</h3>
-                        <p class="staff-role">????? ??????</p>
-                        <p class="staff-detail">???? ??????????</p>
+                        <h3 class="staff-name">આચાર્યશ્રી</h3>
+                        <p class="staff-role">મુખ્ય શિક્ષક</p>
+                        <p class="staff-detail">શાળા વ્યવસ્થાપન</p>
                     </div>
                 </div>
 
@@ -1811,13 +1678,13 @@
                     <div class="staff-photo">
                         <div class="staff-photo-placeholder">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                            <span>???? ????</span>
+                            <span>ફોટો મૂકો</span>
                         </div>
                     </div>
                     <div class="staff-info">
-                        <h3 class="staff-name">?????????? - ?</h3>
-                        <p class="staff-role">?????? ??????</p>
-                        <p class="staff-detail">???? ? - ?</p>
+                        <h3 class="staff-name">શિક્ષકશ્રી - ૧</h3>
+                        <p class="staff-role">વરિષ્ઠ શિક્ષક</p>
+                        <p class="staff-detail">ધોરણ ૧ - ૪</p>
                     </div>
                 </div>
 
@@ -1825,13 +1692,13 @@
                     <div class="staff-photo">
                         <div class="staff-photo-placeholder">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                            <span>???? ????</span>
+                            <span>ફોટો મૂકો</span>
                         </div>
                     </div>
                     <div class="staff-info">
-                        <h3 class="staff-name">?????????? - ?</h3>
-                        <p class="staff-role">??????</p>
-                        <p class="staff-detail">???? ? - ?</p>
+                        <h3 class="staff-name">શિક્ષકશ્રી - ૨</h3>
+                        <p class="staff-role">શિક્ષક</p>
+                        <p class="staff-detail">ધોરણ ૫ - ૮</p>
                     </div>
                 </div>
 
@@ -1839,13 +1706,13 @@
                     <div class="staff-photo">
                         <div class="staff-photo-placeholder">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                            <span>???? ????</span>
+                            <span>ફોટો મૂકો</span>
                         </div>
                     </div>
                     <div class="staff-info">
-                        <h3 class="staff-name">?????????? - ?</h3>
-                        <p class="staff-role">??????</p>
-                        <p class="staff-detail">????????? / ??????</p>
+                        <h3 class="staff-name">શિક્ષકશ્રી - ૩</h3>
+                        <p class="staff-role">શિક્ષક</p>
+                        <p class="staff-detail">કમ્પ્યુટર / રમતગમત</p>
                     </div>
                 </div>
             </div>
@@ -1856,55 +1723,28 @@
     <section class="section gallery" id="gallery">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">???? ??????</div>
-                <h2 class="section-title">?????? ?????? ?????</h2>
+                <div class="section-tag">ફોટો ગેલેરી</div>
+                <h2 class="section-title">શાળાની યાદગાર ક્ષણો</h2>
                 <p class="section-title-en">Memorable Moments</p>
-                <p class="section-desc">???????????, ?????????? ??? ?????? ???????????? ??????</p>
+                <p class="section-desc">વિદ્યાર્થીઓ, કાર્યક્રમો અને શાળાની પ્રવૃત્તિઓની તસવીરો</p>
             </div>
 
             <div class="gallery-grid">
-                <!-- Main school photo -->
                 <div class="gallery-item reveal">
                     <div class="gallery-img">
-                        <img src="school5.jpg" alt="???? ?????">
+                        <img src="school5.jpg" alt="શાળા પરિસર">
                     </div>
                     <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">???? ?????</span>
-                    </div>
-                </div>
-
-                <!-- Annual Day / Varshikotsav -->
-                <div class="gallery-item reveal reveal-delay-1">
-                    <div class="gallery-img">
-                        <img src="student2.jpg" alt="???????????? ?????????">
-                    </div>
-                    <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">???????????? ?????????</span>
-                    </div>
-                </div>
-
-                <!-- Placeholder items 3, 4, 5 -->
-                <div class="gallery-item reveal reveal-delay-2">
-                    <div class="gallery-img">
-                        <div class="gallery-img-placeholder">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                            <span>?????? ????</span>
-                        </div>
-                    </div>
-                    <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">?????? ???????</span>
+                        <span class="gallery-overlay-text">શાળા પરિસર</span>
                     </div>
                 </div>
 
                 <div class="gallery-item reveal reveal-delay-1">
                     <div class="gallery-img">
-                        <div class="gallery-img-placeholder">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                            <span>??????????? ????</span>
-                        </div>
+                        <img src="student2.jpg" alt="વાર્ષિકોત્સવ કાર્યક્રમ">
                     </div>
                     <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">??????????? ????</span>
+                        <span class="gallery-overlay-text">વાર્ષિકોત્સવ કાર્યક્રમ</span>
                     </div>
                 </div>
 
@@ -1912,11 +1752,35 @@
                     <div class="gallery-img">
                         <div class="gallery-img-placeholder">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                            <span>???????</span>
+                            <span>રમતગમત દિવસ</span>
                         </div>
                     </div>
                     <div class="gallery-overlay">
-                        <span class="gallery-overlay-text">??????? ?????????</span>
+                        <span class="gallery-overlay-text">ક્રીડા સ્પર્ધા</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item reveal reveal-delay-1">
+                    <div class="gallery-img">
+                        <div class="gallery-img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <span>સ્વાતંત્ર્ય દિવસ</span>
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">સ્વાતંત્ર્ય પર્વ</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item reveal reveal-delay-2">
+                    <div class="gallery-img">
+                        <div class="gallery-img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <span>વર્ગખંડ</span>
+                        </div>
+                    </div>
+                    <div class="gallery-overlay">
+                        <span class="gallery-overlay-text">વર્ગખંડ પ્રવૃત્તિ</span>
                     </div>
                 </div>
             </div>
@@ -1927,8 +1791,8 @@
     <section class="section contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag">??????</div>
-                <h2 class="section-title">????? ?????? ???</h2>
+                <div class="section-tag">સંપર્ક</div>
+                <h2 class="section-title">અમારો સંપર્ક કરો</h2>
                 <p class="section-title-en">Get In Touch</p>
             </div>
 
@@ -1939,8 +1803,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
                         <div class="contact-card-content">
-                            <h4>???????</h4>
-                            <p>???? ????? ???????? ????,<br>???: ????? ???, ??: ??????,<br>??: ?????? - ??????<br>??????, ????</p>
+                            <h4>સરનામું</h4>
+                            <p>શ્રી દહીડા પ્રાથમિક શાળા,<br>મું: દહીડા ગામ, તા: અમરેલી,<br>જિ: અમરેલી - ૩૬૫૬૦૧<br>ગુજરાત, ભારત</p>
                         </div>
                     </div>
 
@@ -1949,8 +1813,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                         </div>
                         <div class="contact-card-content">
-                            <h4>??? ????</h4>
-                            <p><a href="tel:+919824298001">+91 ??????????</a></p>
+                            <h4>ફોન નંબર</h4>
+                            <p><a href="tel:+919824298001">+91 ૯૮૨૪૨૯૮૦૦૧</a></p>
                         </div>
                     </div>
 
@@ -1959,8 +1823,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
                         <div class="contact-card-content">
-                            <h4>?????? ???</h4>
-                            <p>?????? ?? ??????<br>????? ??:?? - ????? ?:??</p>
+                            <h4>શાળાનો સમય</h4>
+                            <p>સોમવાર થી શનિવાર<br>સવારે ૧૦:૩૦ - સાંજે ૪:૩૦</p>
                         </div>
                     </div>
 
@@ -1969,12 +1833,11 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         </div>
                         <div class="contact-card-content">
-                            <h4>?????</h4>
+                            <h4>ઇમેઇલ</h4>
                             <p><a href="mailto:shridahidaschool@gmail.com">shridahidaschool@gmail.com</a></p>
                         </div>
                     </div>
 
-                    <!-- Google Map -->
                     <div class="map-wrapper reveal">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d71.2!3d21.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDM2JzAwLjAiTiA3McKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
@@ -1983,51 +1846,50 @@
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                         <a href="https://maps.app.goo.gl/pH2MQHLoEAxr4NQS9?g_st=atm" target="_blank" rel="noopener noreferrer" class="map-link-overlay">
-                            ?? Google Maps ?? ???
+                            📍 Google Maps પર જુઓ
                         </a>
                     </div>
                 </div>
 
-                <!-- Contact Form -->
                 <div class="contact-form-wrapper reveal">
-                    <h3 class="contact-form-title">???? ????? ?????</h3>
-                    <p class="contact-form-subtitle">????? ?????? ???? ???? ???? ?????</p>
+                    <h3 class="contact-form-title">અમને સંદેશ મોકલો</h3>
+                    <p class="contact-form-subtitle">તમારો પ્રશ્ન અથવા સૂચન અમને જણાવો</p>
 
                     <form id="contactForm">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="name">?????? ??? *</label>
-                                <input type="text" id="name" name="name" placeholder="??? ???? ???" required>
+                                <label for="name">તમારું નામ *</label>
+                                <input type="text" id="name" name="name" placeholder="નામ દાખલ કરો" required>
                             </div>
                             <div class="form-group">
-                                <label for="phone">??? ???? *</label>
-                                <input type="tel" id="phone" name="phone" placeholder="??? ????" required>
+                                <label for="phone">ફોન નંબર *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="ફોન નંબર" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="email">?????</label>
-                            <input type="email" id="email" name="email" placeholder="????? ???? ???">
+                            <label for="email">ઇમેઇલ</label>
+                            <input type="email" id="email" name="email" placeholder="ઇમેઇલ દાખલ કરો">
                         </div>
 
                         <div class="form-group">
-                            <label for="subject">????</label>
+                            <label for="subject">વિષય</label>
                             <select id="subject" name="subject">
-                                <option value="">???? ???? ???</option>
-                                <option value="admission">?????? ????</option>
-                                <option value="info">??????? ??????</option>
-                                <option value="complaint">??????</option>
-                                <option value="suggestion">????</option>
-                                <option value="other">????</option>
+                                <option value="">વિષય પસંદ કરો</option>
+                                <option value="admission">પ્રવેશ અંગે</option>
+                                <option value="info">સામાન્ય માહિતી</option>
+                                <option value="complaint">ફરિયાદ</option>
+                                <option value="suggestion">સૂચન</option>
+                                <option value="other">અન્ય</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="message">????? ????? *</label>
-                            <textarea id="message" name="message" placeholder="???? ???..." required></textarea>
+                            <label for="message">તમારો સંદેશ *</label>
+                            <textarea id="message" name="message" placeholder="અહીં લખો..." required></textarea>
                         </div>
 
-                        <button type="submit" class="btn-submit">????? ????? ?</button>
+                        <button type="submit" class="btn-submit">સંદેશ મોકલો →</button>
                     </form>
                 </div>
             </div>
@@ -2040,9 +1902,9 @@
             <div class="footer-main">
                 <div class="footer-brand">
                     <div class="logo-text">
-                        <span class="logo-text-main">???? ????? ???????? ????</span>
+                        <span class="logo-text-main">શ્રી દહિડા પ્રાથમિક શાળા</span>
                     </div>
-                    <p>???? ?????? ????? ?????? ???????? ??? ????????? ?????? ????. ?????, ??????? ??? ???????? ?????? ????????????? ??? ????????? ?????? ?????.</p>
+                    <p>વર્ષ ૧૯૧૧થી દહિડા ગામમાં શિક્ષણનો દીપ પ્રગટાવતી સરકારી શાળા.</p>
                     <div class="footer-social">
                         <a href="#" aria-label="Facebook">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -2057,48 +1919,47 @@
                 </div>
 
                 <div class="footer-col">
-                    <h4>???? ??????</h4>
+                    <h4>ઝડપી લિંક્સ</h4>
                     <ul>
-                        <li><a href="#home">?????</a></li>
-                        <li><a href="#about">????? ????</a></li>
-                        <li><a href="#facilities">???????</a></li>
-                        <li><a href="#staff">?????? ????</a></li>
-                        <li><a href="#gallery">??????</a></li>
+                        <li><a href="#home">શરૂઆત</a></li>
+                        <li><a href="#about">અમારા વિશે</a></li>
+                        <li><a href="#facilities">સુવિધાઓ</a></li>
+                        <li><a href="#staff">શિક્ષક મંડળ</a></li>
+                        <li><a href="#gallery">ગેલેરી</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h4>???????</h4>
+                    <h4>સુવિધાઓ</h4>
                     <ul>
-                        <li><a href="#facilities">????????? ???</a></li>
-                        <li><a href="#facilities">?????????</a></li>
-                        <li><a href="#facilities">?????? ?????</a></li>
-                        <li><a href="#facilities">??????? ????</a></li>
-                        <li><a href="#facilities">?????? ??????</a></li>
+                        <li><a href="#facilities">કમ્પ્યુટર લેબ</a></li>
+                        <li><a href="#facilities">પુસ્તકાલય</a></li>
+                        <li><a href="#facilities">રમતનું મેદાન</a></li>
+                        <li><a href="#facilities">મધ્યાહન ભોજન</a></li>
+                        <li><a href="#facilities">ડિજિટલ શિક્ષણ</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
-                    <h4>?????? ??????</h4>
+                    <h4>સંપર્ક માહિતી</h4>
                     <ul>
-                        <li><a href="#">????? ???, ??????</a></li>
-                        <li><a href="tel:+919824298001">+91 ??????????</a></li>
-                        <li><a href="mailto:shridahidaschool@gmail.com">????? ?????</a></li>
+                        <li><a href="#">દહીડા ગામ, અમરેલી</a></li>
+                        <li><a href="tel:+919824298001">+91 ૯૮૨૪૨૯૮૦૦૧</a></li>
+                        <li><a href="mailto:shridahidaschool@gmail.com">ઇમેઇલ મોકલો</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; ???? ???? ????? ???????? ????. ?????????? ????????.</p>
+                <p>&copy; ૨૦૨૫ શ્રી દહિડા પ્રાથમિક શાળા. સર્વાધિકાર સુરક્ષિત.</p>
                 <div class="footer-bottom-links">
-                    <a href="#">???????? ????</a>
-                    <a href="#">????? ??? ????</a>
+                    <a href="#">ગોપનીયતા નીતિ</a>
+                    <a href="#">નિયમો અને શરતો</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll to top -->
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
@@ -2121,80 +1982,56 @@
             });
         });
 
-        // Header scroll effect
+        // Header scroll
         const header = document.getElementById('header');
-
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.pageYOffset > 50);
         });
 
-        // Active nav link on scroll
+        // Active nav
         const sections = document.querySelectorAll('section[id]');
         const navItems = document.querySelectorAll('.nav-links a:not(.nav-cta)');
 
         function updateActiveNav() {
             const scrollY = window.pageYOffset + 120;
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                if (scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
                     navItems.forEach(item => {
                         item.classList.remove('active');
-                        if (item.getAttribute('href') === '#' + sectionId) {
-                            item.classList.add('active');
-                        }
+                        if (item.getAttribute('href') === '#' + section.id) item.classList.add('active');
                     });
                 }
             });
         }
-
         window.addEventListener('scroll', updateActiveNav);
 
         // Scroll Reveal
         const revealElements = document.querySelectorAll('.reveal');
-
         function revealOnScroll() {
             revealElements.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                if (elementTop < window.innerHeight - 80) {
-                    el.classList.add('visible');
-                }
+                if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
             });
         }
-
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
 
         // Counter Animation
         function animateCounters() {
-            const counters = document.querySelectorAll('.hero-stat-number');
-            counters.forEach(counter => {
+            document.querySelectorAll('.hero-stat-number').forEach(counter => {
                 const target = parseInt(counter.getAttribute('data-count'));
-                const duration = 2000;
-                const step = target / (duration / 16);
+                const step = target / 125;
                 let current = 0;
                 const timer = setInterval(() => {
                     current += step;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
+                    if (current >= target) { current = target; clearInterval(timer); }
                     counter.textContent = Math.floor(current) + '+';
                 }, 16);
             });
         }
 
-        const heroObserver = new IntersectionObserver((entries) => {
+        const heroObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounters();
-                    heroObserver.unobserve(entry.target);
-                }
+                if (entry.isIntersecting) { animateCounters(); heroObserver.unobserve(entry.target); }
             });
         }, { threshold: 0.5 });
 
@@ -2203,18 +2040,10 @@
 
         // Scroll to Top
         const scrollTopBtn = document.getElementById('scrollTop');
-
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 400) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-            }
+            scrollTopBtn.classList.toggle('visible', window.pageYOffset > 400);
         });
-
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
         // Contact Form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -2222,22 +2051,12 @@
             const name = document.getElementById('name').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('message').value.trim();
-
-            if (!name || !phone || !message) {
-                alert('???? ????? ??? ????? ?????? ???.');
-                return;
-            }
-
+            if (!name || !phone || !message) { alert('કૃપા કરીને બધી જરૂરી માહિતી ભરો.'); return; }
             const btn = this.querySelector('.btn-submit');
             const originalText = btn.textContent;
-            btn.textContent = '????? ???????! ?';
+            btn.textContent = 'સંદેશ મોકલાયો! ✓';
             btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
-
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '';
-                this.reset();
-            }, 3000);
+            setTimeout(() => { btn.textContent = originalText; btn.style.background = ''; this.reset(); }, 3000);
         });
     </script>
 </body>
