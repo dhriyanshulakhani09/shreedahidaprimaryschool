@@ -1,1018 +1,544 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>શ્રી દહિડા પ્રાથમિક શાળા | Shri Dahida Primary School</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>શ્રી દહિડા પ્રાથમિક શાળા | Est. 1911</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Noto+Sans+Gujarati:wght@300;400;500;600;700&subset=gujarati&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-gujarati@5.0.0/index.min.css" onerror="">
+<style>
+:root{
+  --bg:#faf7f0;--bg2:#f5f0e3;--s:#fff;--s2:#f0ebe0;
+  --p:#1a472a;--pl:#2d6b45;--pd:#0f2d1a;
+  --a:#d4a843;--al:#e8c76a;--ad:#b8912e;--sf:#e07b3a;
+  --t1:#1a1a1a;--t2:#4a4540;--t3:#7a7570;
+  --td:#f0ece4;--bd:#e0dbd0;
+  --sh1:0 2px 12px rgba(26,71,42,.06);
+  --sh2:0 8px 32px rgba(26,71,42,.1);
+  --sh3:0 20px 60px rgba(26,71,42,.12);
+  --glow:0 0 40px rgba(212,168,67,.15);
+  --r1:8px;--r2:14px;--r3:22px;
+  --tt:.35s cubic-bezier(.25,.46,.45,.94);
+  --fg:'Noto Sans Gujarati','Nirmala UI','Gujarati Sangam MN','Lohit Gujarati',sans-serif;
+  --fd:'Playfair Display','Nirmala UI',Georgia,serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--fg);background:var(--bg);color:var(--t1);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+.container{max-width:1260px;margin:0 auto;padding:0 24px}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+::-webkit-scrollbar{width:7px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--p);border-radius:4px}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&family=Noto+Sans+Gujarati:wght@300;400;500;600;700&subset=gujarati&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-sans-gujarati@5.0.0/index.min.css" onerror="">
+/* ── HEADER ── */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,45,26,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(212,168,67,.12);transition:var(--tt)}
+.hdr.sc{box-shadow:0 4px 30px rgba(0,0,0,.25)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:1260px;margin:0 auto;padding:0 24px}
+.logo-g{display:flex;align-items:center;gap:16px}
+.logo-i{width:64px;height:64px;border-radius:16px;overflow:hidden;flex-shrink:0;border:2.5px solid var(--a);box-shadow:0 0 24px rgba(212,168,67,.35);background:var(--pd)}
+.logo-i img{width:100%;height:100%;object-fit:cover}
+.logo-t{display:flex;flex-direction:column}
+.logo-m{font-family:var(--fg);font-size:18px;font-weight:700;color:var(--a);line-height:1.2}
+.logo-s{font-family:var(--fd);font-size:11px;color:rgba(240,236,228,.55);letter-spacing:.1em;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:4px;list-style:none}
+.nav a{font-family:var(--fg);font-size:14px;font-weight:500;color:rgba(240,236,228,.75);padding:8px 16px;border-radius:var(--r1);transition:var(--tt)}
+.nav a:hover,.nav a.on{color:var(--a);background:rgba(212,168,67,.1)}
+.nav .cta{background:linear-gradient(135deg,var(--a),var(--al))!important;color:var(--pd)!important;font-weight:700!important;padding:10px 22px!important;box-shadow:0 2px 12px rgba(212,168,67,.3)}
+.nav .cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,168,67,.4)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:1001}
+.burger span{width:26px;height:2.5px;background:var(--a);border-radius:2px;transition:var(--tt)}
+.burger.ac span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.burger.ac span:nth-child(2){opacity:0}.burger.ac span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-    <style>
-        :root {
-            --font-guj: 'Noto Sans Gujarati', 'Gujarati Sangam MN', 'Nirmala UI', 'Lohit Gujarati', 'Gujarati MT', 'Arial Unicode MS', sans-serif;
-            --font-display: 'Playfair Display', 'Nirmala UI', 'Gujarati Sangam MN', Georgia, serif;
-            --font-body: 'Source Serif 4', 'Noto Sans Gujarati', 'Nirmala UI', 'Gujarati Sangam MN', serif;
-            --bg: #faf7f0;
-            --bg-warm: #f5f0e3;
-            --surface: #ffffff;
-            --surface-alt: #f0ebe0;
-            --primary: #1a472a;
-            --primary-light: #2d6b45;
-            --primary-dark: #0f2d1a;
-            --accent: #d4a843;
-            --accent-light: #e8c76a;
-            --accent-dark: #b8912e;
-            --saffron: #e07b3a;
-            --text-primary: #1a1a1a;
-            --text-secondary: #4a4540;
-            --text-muted: #7a7570;
-            --text-on-dark: #f0ece4;
-            --text-on-accent: #1a1a1a;
-            --border: #e0dbd0;
-            --shadow-sm: 0 2px 8px rgba(26, 71, 42, 0.06);
-            --shadow-md: 0 8px 30px rgba(26, 71, 42, 0.1);
-            --shadow-lg: 0 20px 60px rgba(26, 71, 42, 0.12);
-            --shadow-glow: 0 0 40px rgba(212, 168, 67, 0.15);
-            --radius-sm: 8px;
-            --radius-md: 14px;
-            --radius-lg: 22px;
-            --radius-xl: 32px;
-            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+/* ── HERO ── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(165deg,#071a0e 0%,var(--pd) 30%,var(--p) 60%,#1e5a35 100%);overflow:hidden;padding-top:80px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(212,168,67,.06) 0%,transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(212,168,67,.04) 0%,transparent 50%)}
+.hd1,.hd2,.hd3{position:absolute;border-radius:50%;pointer-events:none}
+.hd1{width:500px;height:500px;background:var(--a);top:-150px;right:-100px;opacity:.06;animation:fl 8s ease-in-out infinite}
+.hd2{width:300px;height:300px;background:var(--al);bottom:-80px;left:-60px;opacity:.05;animation:fl 10s ease-in-out infinite reverse}
+.hd3{width:160px;height:160px;background:#fff;top:38%;right:22%;opacity:.03;animation:fl 6s ease-in-out infinite 1s}
+@keyframes fl{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-30px) scale(1.05)}}
+.hero-c{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:60px 0}
+.hero-t{animation:fu 1s ease forwards}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,168,67,.12);border:1px solid rgba(212,168,67,.25);padding:7px 20px;border-radius:50px;font-family:var(--fg);font-size:13px;font-weight:500;color:var(--a);margin-bottom:28px;animation:fu 1s ease .15s forwards;opacity:0}
+.badge i{width:8px;height:8px;background:var(--a);border-radius:50%;animation:pls 2s ease infinite}
+@keyframes pls{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+.hero-t h1{font-family:var(--fg);font-size:clamp(30px,4.2vw,48px);font-weight:700;color:var(--td);line-height:1.25;margin-bottom:10px;animation:fu 1s ease .25s forwards;opacity:0}
+.hero-t .en{font-family:var(--fd);font-size:clamp(15px,1.8vw,20px);font-weight:400;color:rgba(240,236,228,.45);margin-bottom:24px;animation:fu 1s ease .35s forwards;opacity:0}
+.hero-t p.desc{font-family:var(--fg);font-size:16px;color:rgba(240,236,228,.7);line-height:1.85;margin-bottom:36px;max-width:520px;animation:fu 1s ease .45s forwards;opacity:0}
+.acts{display:flex;gap:14px;flex-wrap:wrap;animation:fu 1s ease .55s forwards;opacity:0}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:var(--r1);font-family:var(--fg);font-size:15px;font-weight:600;cursor:pointer;border:none;transition:var(--tt)}
+.btn-p{background:linear-gradient(135deg,var(--a),var(--al));color:var(--pd);box-shadow:0 4px 20px rgba(212,168,67,.3)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(212,168,67,.45)}
+.btn-o{background:rgba(255,255,255,.06);color:var(--td);border:1.5px solid rgba(240,236,228,.2);backdrop-filter:blur(8px)}
+.btn-o:hover{border-color:var(--a);color:var(--a);transform:translateY(-3px)}
+.btn svg{width:18px;height:18px;transition:transform .3s}.btn:hover svg{transform:translateX(3px)}
+.hero-v{position:relative;animation:fu 1s ease .4s forwards;opacity:0}
+.hero-card{position:relative;background:rgba(255,255,255,.06);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);border-radius:var(--r3);padding:36px;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--a),var(--sf),var(--a))}
+.hero-img{width:100%;height:280px;border-radius:var(--r2);margin-bottom:24px;overflow:hidden;position:relative}
+.hero-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.hero-img:hover img{transform:scale(1.06)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat{text-align:center;padding:16px 8px;background:rgba(255,255,255,.04);border-radius:var(--r1);border:1px solid rgba(255,255,255,.06);transition:var(--tt)}
+.stat:hover{background:rgba(212,168,67,.08);border-color:rgba(212,168,67,.15)}
+.stat b{font-family:var(--fd);font-size:30px;font-weight:700;color:var(--a);display:block;line-height:1;margin-bottom:4px}
+.stat span{font-family:var(--fg);font-size:11px;color:rgba(240,236,228,.5)}
+.fl-card{position:absolute;background:rgba(255,255,255,.95);border-radius:var(--r2);padding:14px 18px;box-shadow:var(--sh3);z-index:3;animation:fc 4s ease-in-out infinite}
+.fl1{top:-12px;right:-16px;animation-delay:.5s}.fl2{bottom:40px;left:-28px;animation-delay:1.5s}
+@keyframes fc{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.fl-card em{font-size:20px;font-style:normal;display:block;margin-bottom:3px}
+.fl-card b{font-family:var(--fg);font-size:12px;font-weight:600;color:var(--p);display:block}
+.fl-card small{font-size:11px;color:var(--t3)}
+@keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+/* ── SECTION SHARED ── */
+.sec{padding:100px 0}
+.sec-h{text-align:center;margin-bottom:60px}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fg);font-size:13px;font-weight:600;color:var(--ad);letter-spacing:.05em;margin-bottom:14px}
+.tag::before,.tag::after{content:'';width:24px;height:1.5px;background:var(--a)}
+.sec-h h2{font-family:var(--fg);font-size:clamp(26px,3.5vw,40px);font-weight:700;color:var(--pd);line-height:1.3;margin-bottom:6px}
+.sec-h .en{font-family:var(--fd);font-size:clamp(14px,1.5vw,17px);color:var(--t3);margin-bottom:16px}
+.sec-h p{font-family:var(--fg);font-size:15px;color:var(--t2);max-width:600px;margin:0 auto;line-height:1.8}
 
-        body {
-            font-family: var(--font-guj);
-            background: var(--bg);
-            color: var(--text-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -webkit-text-size-adjust: 100%;
-            text-rendering: optimizeLegibility;
-        }
+/* ── INFO STRIP ── */
+.strip{background:var(--s);border-bottom:1px solid var(--bd);position:relative;z-index:2}
+.strip-g{display:grid;grid-template-columns:repeat(4,1fr)}
+.si{display:flex;align-items:center;gap:14px;padding:20px 24px;border-right:1px solid var(--bd);transition:var(--tt)}
+.si:last-child{border-right:none}.si:hover{background:var(--bg2)}
+.si i{width:44px;height:44px;background:linear-gradient(135deg,var(--p),var(--pl));border-radius:var(--r1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.si i svg{width:20px;height:20px;color:var(--a)}
+.si h4{font-family:var(--fg);font-size:13px;font-weight:600;color:var(--p);margin-bottom:1px}
+.si small{font-family:var(--fg);font-size:12px;color:var(--t3)}
 
-        body::before {
-            content: '';
-            position: fixed; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 9999;
-        }
+/* ── ABOUT ── */
+.about{background:radial-gradient(ellipse at 10% 90%,rgba(212,168,67,.03) 0%,transparent 50%),var(--bg)}
+.ab-g{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.ab-img{position:relative}
+.ab-img .pic{width:100%;height:420px;border-radius:var(--r3);overflow:hidden;box-shadow:var(--sh3)}
+.ab-img .pic img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.ab-img:hover .pic img{transform:scale(1.05)}
+.ab-badge{position:absolute;bottom:-20px;right:-20px;width:120px;height:120px;background:linear-gradient(135deg,var(--a),var(--al));border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:var(--sh3),var(--glow);border:4px solid var(--bg)}
+.ab-badge b{font-family:var(--fd);font-size:30px;font-weight:800;color:var(--pd);line-height:1}
+.ab-badge small{font-family:var(--fg);font-size:11px;font-weight:600;color:var(--pd);opacity:.7}
+.ab-c{padding-top:10px}.ab-c .tag{justify-content:flex-start}.ab-c h2,.ab-c .en{text-align:left}.ab-c .en{margin-bottom:24px}
+.ab-t{font-family:var(--fg);font-size:15px;color:var(--t2);line-height:2;margin-bottom:28px}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px}
+.ft{display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--s);border-radius:var(--r1);border:1px solid var(--bd);transition:var(--tt)}
+.ft:hover{border-color:var(--a);box-shadow:var(--sh1);transform:translateY(-2px)}
+.ft em{width:36px;height:36px;background:linear-gradient(135deg,rgba(212,168,67,.12),rgba(212,168,67,.04));border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;font-style:normal}
+.ft span{font-family:var(--fg);font-size:13px;font-weight:500;line-height:1.5}
+.ab-quote{font-family:var(--fg);font-size:15px;color:var(--t2);line-height:1.9;font-style:italic;border-left:3px solid var(--a);padding-left:18px;margin:0}
 
-        .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
-        a { color: inherit; text-decoration: none; }
-        img { max-width: 100%; display: block; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--primary-light); }
+/* ── HIGHLIGHTS ── */
+.hl{background:linear-gradient(170deg,var(--pd) 0%,var(--p) 100%);position:relative;overflow:hidden}
+.hl::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4a843' fill-opacity='.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")}
+.hl .tag{color:var(--a)}.hl .tag::before,.hl .tag::after{background:var(--a)}
+.hl .sec-h h2{color:var(--td)}.hl .sec-h .en{color:rgba(240,236,228,.45)}.hl .sec-h p{color:rgba(240,236,228,.65)}
+.hl-g{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;z-index:2}
+.hc{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.07);border-radius:var(--r2);padding:30px 22px;text-align:center;transition:var(--tt);position:relative;overflow:hidden}
+.hc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--a);transform:scaleX(0);transition:transform .4s ease}
+.hc:hover::before{transform:scaleX(1)}
+.hc:hover{background:rgba(255,255,255,.1);transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.2)}
+.hc em{width:56px;height:56px;background:rgba(212,168,67,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:26px;font-style:normal}
+.hc h3{font-family:var(--fg);font-size:15px;font-weight:600;color:var(--td);margin-bottom:6px}
+.hc p{font-family:var(--fg);font-size:13px;color:rgba(240,236,228,.5);line-height:1.7}
 
-        /* ===== HEADER ===== */
-        .header {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(26, 71, 42, 0.95);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(212, 168, 67, 0.15);
-            transition: var(--transition);
-        }
-        .header.scrolled {
-            background: rgba(15, 45, 26, 0.98);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-        }
-        .header-inner {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 24px; height: 76px; max-width: 1240px; margin: 0 auto;
-        }
-        .logo-group { display: flex; align-items: center; gap: 14px; }
-        .logo-icon {
-            width: 50px; height: 50px; border-radius: 50%; overflow: hidden;
-            flex-shrink: 0; border: 2px solid var(--accent);
-            box-shadow: 0 0 20px rgba(212, 168, 67, 0.3);
-        }
-        .logo-icon img { width: 100%; height: 100%; object-fit: cover; }
-        .logo-text { display: flex; flex-direction: column; }
-        .logo-text-main {
-            font-family: var(--font-guj); font-size: 16px; font-weight: 700;
-            color: var(--accent); line-height: 1.2;
-        }
-        .logo-text-sub {
-            font-family: var(--font-display); font-size: 11px;
-            color: rgba(240, 236, 228, 0.6); letter-spacing: 0.08em; text-transform: uppercase;
-        }
-        .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
-        .nav-links a {
-            font-family: var(--font-guj); font-size: 14px; font-weight: 500;
-            color: rgba(240, 236, 228, 0.8); padding: 8px 16px;
-            border-radius: var(--radius-sm); transition: var(--transition);
-        }
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--accent); background: rgba(212, 168, 67, 0.1);
-        }
-        .nav-cta {
-            background: var(--accent) !important; color: var(--primary-dark) !important;
-            font-weight: 600 !important; padding: 8px 20px !important;
-        }
-        .nav-cta:hover { background: var(--accent-light) !important; transform: translateY(-1px); }
-        .hamburger {
-            display: none; flex-direction: column; gap: 5px; cursor: pointer;
-            padding: 8px; z-index: 1001;
-        }
-        .hamburger span {
-            width: 26px; height: 2.5px; background: var(--accent);
-            border-radius: 2px; transition: var(--transition);
-        }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+/* ── STAFF ── */
+.staff{background:radial-gradient(ellipse at 80% 80%,rgba(26,71,42,.03) 0%,transparent 50%),var(--bg)}
+.st-g{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.sc-pr{grid-column:2}
+.sc{background:var(--s);border-radius:var(--r2);overflow:hidden;border:1px solid var(--bd);transition:var(--tt);position:relative}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--p),var(--a));z-index:2;opacity:0;transition:opacity .4s}
+.sc:hover::before{opacity:1}
+.sc:hover{transform:translateY(-8px);box-shadow:var(--sh3);border-color:var(--a)}
+.sc-pr{border:2px solid var(--a);box-shadow:var(--sh2),var(--glow)}
+.sc-pr .sp{height:280px}
+.sc-pr .sn{font-size:18px}
+.sc-pr .sr{display:inline-block;background:linear-gradient(135deg,var(--a),var(--al));color:var(--pd);padding:4px 16px;border-radius:50px;font-weight:700;font-size:13px}
+.sp{width:100%;height:260px;overflow:hidden;position:relative;background:var(--s2)}
+.sp img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s ease}
+.sc:hover .sp img{transform:scale(1.06)}
+.sp::after{content:'';position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(transparent,rgba(255,255,255,.85));pointer-events:none}
+.si2{padding:20px 20px 24px;text-align:center}
+.sn{font-family:var(--fg);font-size:16px;font-weight:700;color:var(--pd);margin-bottom:5px}
+.sr{font-family:var(--fg);font-size:13px;color:var(--ad);font-weight:600;margin-bottom:6px}
+.sd{font-family:var(--fg);font-size:12px;color:var(--t3);display:flex;align-items:center;justify-content:center;gap:6px}
+.sd svg{width:14px;height:14px;color:var(--a)}
 
-        /* ===== HERO ===== */
-        .hero {
-            position: relative; min-height: 100vh; display: flex; align-items: center;
-            background:
-                radial-gradient(ellipse at 20% 80%, rgba(212, 168, 67, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(26, 71, 42, 0.05) 0%, transparent 50%),
-                linear-gradient(175deg, var(--primary-dark) 0%, var(--primary) 45%, var(--primary-light) 100%);
-            overflow: hidden; padding-top: 76px;
-        }
-        .hero::before {
-            content: ''; position: absolute; inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a843' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.6;
-        }
-        .hero-deco { position: absolute; border-radius: 50%; opacity: 0.08; pointer-events: none; }
-        .hero-deco-1 { width: 500px; height: 500px; background: var(--accent); top: -150px; right: -100px; animation: float 8s ease-in-out infinite; }
-        .hero-deco-2 { width: 300px; height: 300px; background: var(--accent-light); bottom: -80px; left: -60px; animation: float 10s ease-in-out infinite reverse; }
-        .hero-deco-3 { width: 150px; height: 150px; background: #fff; top: 40%; right: 25%; animation: float 6s ease-in-out infinite 1s; }
-        @keyframes float { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(20px, -30px) scale(1.05); } }
+/* ── GALLERY ── */
+.gal{background:var(--bg2)}
+.gal-g{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,220px);gap:14px}
+.gi{border-radius:var(--r2);overflow:hidden;position:relative;cursor:pointer;transition:var(--tt)}
+.gi:hover{transform:scale(1.02);box-shadow:var(--sh3);z-index:2}
+.gi:first-child{grid-column:span 2;grid-row:span 2}
+.gi .gi-i{width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.gi .gi-i img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gi:hover .gi-i img{transform:scale(1.08)}
+.gi:nth-child(3) .gi-i{background:linear-gradient(135deg,#e07b3a,#c66a2d)}
+.gi:nth-child(4) .gi-i{background:linear-gradient(135deg,#3a7bd5,#2d5fa8)}
+.gi:nth-child(5) .gi-i{background:linear-gradient(135deg,#8e44ad,#6c3483)}
+.gi-ph{display:flex;flex-direction:column;align-items:center;gap:10px}
+.gi-ph svg{width:40px;height:40px;color:rgba(255,255,255,.35)}
+.gi-ph span{font-family:var(--fg);font-size:13px;color:rgba(255,255,255,.45)}
+.gi-ov{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(26,71,42,.85));opacity:0;transition:var(--tt);display:flex;align-items:flex-end;padding:20px}
+.gi:hover .gi-ov{opacity:1}
+.gi-ov span{font-family:var(--fg);font-size:14px;font-weight:600;color:#fff}
 
-        .hero-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 60px 0; }
-        .hero-text { animation: fadeUp 1s ease forwards; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(212, 168, 67, 0.15); border: 1px solid rgba(212, 168, 67, 0.3);
-            padding: 6px 18px; border-radius: 50px;
-            font-family: var(--font-guj); font-size: 13px; font-weight: 500;
-            color: var(--accent); margin-bottom: 28px;
-            animation: fadeUp 1s ease 0.2s forwards; opacity: 0;
-        }
-        .hero-badge-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
-        .hero-title {
-            font-family: var(--font-guj); font-size: clamp(28px, 4vw, 44px); font-weight: 700;
-            color: var(--text-on-dark); line-height: 1.3; margin-bottom: 12px;
-            animation: fadeUp 1s ease 0.3s forwards; opacity: 0;
-        }
-        .hero-title-en {
-            font-family: var(--font-display); font-size: clamp(16px, 2vw, 22px); font-weight: 400;
-            color: rgba(240, 236, 228, 0.5); margin-bottom: 24px;
-            animation: fadeUp 1s ease 0.4s forwards; opacity: 0;
-        }
-        .hero-desc {
-            font-family: var(--font-guj); font-size: 16px; color: rgba(240, 236, 228, 0.75);
-            line-height: 1.8; margin-bottom: 36px; max-width: 520px;
-            animation: fadeUp 1s ease 0.5s forwards; opacity: 0;
-        }
-        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 1s ease 0.6s forwards; opacity: 0; }
-        .btn {
-            display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px;
-            border-radius: var(--radius-sm); font-family: var(--font-guj); font-size: 15px;
-            font-weight: 600; cursor: pointer; border: none; transition: var(--transition);
-        }
-        .btn-primary { background: var(--accent); color: var(--primary-dark); box-shadow: 0 4px 20px rgba(212, 168, 67, 0.3); }
-        .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212, 168, 67, 0.4); }
-        .btn-outline { background: transparent; color: var(--text-on-dark); border: 1.5px solid rgba(240, 236, 228, 0.3); }
-        .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-        .btn svg { width: 18px; height: 18px; transition: transform 0.3s ease; }
-        .btn:hover svg { transform: translateX(3px); }
+/* ── CONTACT ── */
+.cnt{background:radial-gradient(ellipse at 90% 10%,rgba(212,168,67,.04) 0%,transparent 50%),var(--bg)}
+.cnt-g{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+.cnt-cs{display:flex;flex-direction:column;gap:18px}
+.cc{display:flex;gap:18px;padding:22px;background:var(--s);border-radius:var(--r2);border:1px solid var(--bd);transition:var(--tt)}
+.cc:hover{border-color:var(--a);box-shadow:var(--sh2);transform:translateX(4px)}
+.cc-i{width:50px;height:50px;background:linear-gradient(135deg,var(--p),var(--pl));border-radius:var(--r1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cc-i svg{width:22px;height:22px;color:var(--a)}
+.cc h4{font-family:var(--fg);font-size:15px;font-weight:600;color:var(--pd);margin-bottom:5px}
+.cc p{font-family:var(--fg);font-size:14px;color:var(--t2);line-height:1.7}
+.cc a{color:var(--ad);font-weight:500;transition:var(--tt)}.cc a:hover{color:var(--p)}
+.map-w{margin-top:18px;border-radius:var(--r2);overflow:hidden;border:1px solid var(--bd);height:240px;position:relative}
+.map-w iframe{width:100%;height:100%;border:0}
+.map-btn{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:var(--pd);color:var(--a);font-family:var(--fg);font-size:13px;font-weight:600;padding:8px 22px;border-radius:50px;box-shadow:var(--sh2);transition:var(--tt);z-index:2}
+.map-btn:hover{background:var(--a);color:var(--pd);transform:translateX(-50%) translateY(-2px)}
+.cf{background:var(--s);border-radius:var(--r3);padding:40px;border:1px solid var(--bd);box-shadow:var(--sh2)}
+.cf h3{font-family:var(--fg);font-size:22px;font-weight:700;color:var(--pd);margin-bottom:4px}
+.cf .sub{font-family:var(--fg);font-size:14px;color:var(--t3);margin-bottom:26px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-family:var(--fg);font-size:13px;font-weight:600;color:var(--t1);margin-bottom:5px}
+.fg input,.fg textarea,.fg select{width:100%;padding:12px 16px;border:1.5px solid var(--bd);border-radius:var(--r1);font-family:var(--fg);font-size:14px;color:var(--t1);background:var(--bg);transition:var(--tt);outline:none}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(26,71,42,.08)}
+.fg textarea{resize:vertical;min-height:100px}
+.btn-s{width:100%;padding:14px;background:linear-gradient(135deg,var(--p),var(--pl));color:var(--td);border:none;border-radius:var(--r1);font-family:var(--fg);font-size:16px;font-weight:600;cursor:pointer;transition:var(--tt);letter-spacing:.02em}
+.btn-s:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
 
-        .hero-visual { position: relative; animation: fadeUp 1s ease 0.5s forwards; opacity: 0; }
-        .hero-card-main {
-            position: relative; background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: var(--radius-lg); padding: 40px; overflow: hidden;
-        }
-        .hero-card-main::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--saffron), var(--accent));
-        }
-        .hero-school-image { width: 100%; height: 280px; border-radius: var(--radius-md); margin-bottom: 28px; overflow: hidden; }
-        .hero-school-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .hero-school-image:hover img { transform: scale(1.05); }
-        .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        .hero-stat {
-            text-align: center; padding: 16px 8px;
-            background: rgba(255, 255, 255, 0.05); border-radius: var(--radius-sm);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
-        .hero-stat-number { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 4px; }
-        .hero-stat-label { font-family: var(--font-guj); font-size: 12px; color: rgba(240, 236, 228, 0.55); }
-        .hero-float-card {
-            position: absolute; background: rgba(255, 255, 255, 0.95);
-            border-radius: var(--radius-md); padding: 14px 18px;
-            box-shadow: var(--shadow-lg); z-index: 3; animation: floatCard 4s ease-in-out infinite;
-        }
-        .hero-float-card-1 { top: -10px; right: -20px; animation-delay: 0.5s; }
-        .hero-float-card-2 { bottom: 40px; left: -30px; animation-delay: 1.5s; }
-        @keyframes floatCard { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        .float-card-icon { font-size: 20px; margin-bottom: 4px; }
-        .float-card-title { font-family: var(--font-guj); font-size: 12px; font-weight: 600; color: var(--primary); }
-        .float-card-desc { font-size: 11px; color: var(--text-muted); }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+/* ── FOOTER ── */
+.ft-main{background:var(--pd);color:var(--td);position:relative;overflow:hidden}
+.ft-main::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--a),var(--sf),var(--a))}
+.ft-g{padding:60px 0 36px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px}
+.fb .logo-m{font-size:18px;margin-bottom:10px}
+.fb p{font-family:var(--fg);font-size:14px;color:rgba(240,236,228,.55);line-height:1.8;margin-bottom:18px}
+.f-social{display:flex;gap:10px}
+.f-social a{width:40px;height:40px;background:rgba(255,255,255,.07);border-radius:var(--r1);display:flex;align-items:center;justify-content:center;transition:var(--tt)}
+.f-social a:hover{background:var(--a);transform:translateY(-2px)}
+.f-social a svg{width:18px;height:18px;color:rgba(240,236,228,.65)}
+.f-social a:hover svg{color:var(--pd)}
+.fc h4{font-family:var(--fg);font-size:15px;font-weight:600;color:var(--a);margin-bottom:18px}
+.fc ul{list-style:none}
+.fc li{margin-bottom:10px}
+.fc a{font-family:var(--fg);font-size:14px;color:rgba(240,236,228,.55);transition:var(--tt);display:flex;align-items:center;gap:8px}
+.fc a::before{content:'';width:4px;height:4px;background:var(--a);border-radius:50%;opacity:0;transition:var(--tt)}
+.fc a:hover{color:var(--a);transform:translateX(4px)}.fc a:hover::before{opacity:1}
+.ft-btm{padding:18px 0;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.ft-btm p{font-family:var(--fg);font-size:13px;color:rgba(240,236,228,.35)}
+.ft-btm nav{display:flex;gap:24px}
+.ft-btm a{font-family:var(--fg);font-size:13px;color:rgba(240,236,228,.35);transition:var(--tt)}.ft-btm a:hover{color:var(--a)}
 
-        /* ===== SECTION SHARED ===== */
-        .section { padding: 100px 0; }
-        .section-header { text-align: center; margin-bottom: 64px; }
-        .section-tag {
-            display: inline-flex; align-items: center; gap: 8px;
-            font-family: var(--font-guj); font-size: 13px; font-weight: 600;
-            color: var(--accent-dark); letter-spacing: 0.05em; margin-bottom: 16px;
-        }
-        .section-tag::before, .section-tag::after { content: ''; width: 24px; height: 1.5px; background: var(--accent); }
-        .section-title {
-            font-family: var(--font-guj); font-size: clamp(26px, 3.5vw, 40px); font-weight: 700;
-            color: var(--primary-dark); line-height: 1.3; margin-bottom: 8px;
-        }
-        .section-title-en { font-family: var(--font-display); font-size: clamp(14px, 1.5vw, 18px); font-weight: 400; color: var(--text-muted); margin-bottom: 20px; }
-        .section-desc { font-family: var(--font-guj); font-size: 16px; color: var(--text-secondary); max-width: 640px; margin: 0 auto; line-height: 1.8; }
+/* ── SCROLL TOP ── */
+.st-top{position:fixed;bottom:28px;right:28px;width:48px;height:48px;background:linear-gradient(135deg,var(--p),var(--pl));color:var(--a);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh2);opacity:0;visibility:hidden;transform:translateY(20px);transition:var(--tt);z-index:999}
+.st-top.v{opacity:1;visibility:visible;transform:translateY(0)}
+.st-top:hover{background:linear-gradient(135deg,var(--a),var(--al));color:var(--pd);transform:translateY(-3px)}
+.st-top svg{width:22px;height:22px}
 
-        /* ===== INFO STRIP ===== */
-        .info-strip { background: var(--surface); border-bottom: 1px solid var(--border); position: relative; z-index: 2; }
-        .info-strip-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
-        .info-strip-item { display: flex; align-items: center; gap: 14px; padding: 20px 24px; border-right: 1px solid var(--border); transition: var(--transition); }
-        .info-strip-item:last-child { border-right: none; }
-        .info-strip-item:hover { background: var(--bg-warm); }
-        .info-strip-icon { width: 46px; height: 46px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .info-strip-icon svg { width: 22px; height: 22px; color: var(--accent); }
-        .info-strip-text h4 { font-family: var(--font-guj); font-size: 13px; font-weight: 600; color: var(--primary); margin-bottom: 2px; }
-        .info-strip-text p { font-family: var(--font-guj); font-size: 12px; color: var(--text-muted); }
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.rv.v{opacity:1;transform:translateY(0)}.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
 
-        /* ===== ABOUT ===== */
-        .about { background: radial-gradient(ellipse at 10% 90%, rgba(212, 168, 67, 0.04) 0%, transparent 50%), var(--bg); }
-        .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
-        .about-image-area { position: relative; }
-        .about-image-main { width: 100%; height: 420px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
-        .about-image-main img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
-        .about-image-main:hover img { transform: scale(1.05); }
-        .about-year-badge {
-            position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px;
-            background: var(--accent); border-radius: 50%; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; box-shadow: var(--shadow-lg), var(--shadow-glow);
-            border: 4px solid var(--bg);
-        }
-        .about-year-badge span:first-child { font-family: var(--font-display); font-size: 32px; font-weight: 800; color: var(--primary-dark); line-height: 1; }
-        .about-year-badge span:last-child { font-family: var(--font-guj); font-size: 11px; font-weight: 600; color: var(--primary-dark); opacity: 0.7; }
-        .about-content { padding-top: 10px; }
-        .about-content .section-tag { justify-content: flex-start; }
-        .about-content .section-title { text-align: left; }
-        .about-content .section-title-en { text-align: left; margin-bottom: 24px; }
-        .about-text { font-family: var(--font-guj); font-size: 15px; color: var(--text-secondary); line-height: 2; margin-bottom: 32px; }
-        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
-        .about-feature { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border); transition: var(--transition); }
-        .about-feature:hover { border-color: var(--accent); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
-        .about-feature-icon { width: 36px; height: 36px; background: linear-gradient(135deg, rgba(212, 168, 67, 0.15), rgba(212, 168, 67, 0.05)); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
-        .about-feature-text { font-family: var(--font-guj); font-size: 13px; font-weight: 500; color: var(--text-primary); line-height: 1.5; }
-
-        /* ===== HIGHLIGHTS ===== */
-        .highlights { background: linear-gradient(175deg, var(--primary-dark) 0%, var(--primary) 100%); position: relative; overflow: hidden; }
-        .highlights::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4a843' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E"); }
-        .highlights .section-tag { color: var(--accent); }
-        .highlights .section-tag::before, .highlights .section-tag::after { background: var(--accent); }
-        .highlights .section-title { color: var(--text-on-dark); }
-        .highlights .section-title-en { color: rgba(240, 236, 228, 0.5); }
-        .highlights .section-desc { color: rgba(240, 236, 228, 0.7); }
-        .highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; z-index: 2; }
-        .highlight-card {
-            background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md);
-            padding: 32px 24px; text-align: center; transition: var(--transition);
-            position: relative; overflow: hidden;
-        }
-        .highlight-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.4s ease; }
-        .highlight-card:hover::before { transform: scaleX(1); }
-        .highlight-card:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); }
-        .highlight-icon { width: 60px; height: 60px; background: rgba(212, 168, 67, 0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 28px; }
-        .highlight-title { font-family: var(--font-guj); font-size: 15px; font-weight: 600; color: var(--text-on-dark); margin-bottom: 8px; }
-        .highlight-desc { font-family: var(--font-guj); font-size: 13px; color: rgba(240, 236, 228, 0.55); line-height: 1.7; }
-
-        /* ============================================
-           STAFF SECTION - UPDATED
-           ============================================ */
-        .staff {
-            background:
-                radial-gradient(ellipse at 80% 80%, rgba(26, 71, 42, 0.03) 0%, transparent 50%),
-                var(--bg);
-        }
-
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-        }
-
-        /* Principal card spans full width on first row centered */
-        .staff-card.principal-card {
-            grid-column: 2;
-        }
-
-        .staff-card {
-            background: var(--surface);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .staff-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            z-index: 2;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .staff-card:hover::before {
-            opacity: 1;
-        }
-
-        .staff-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent);
-        }
-
-        /* Principal card special styling */
-        .staff-card.principal-card {
-            border: 2px solid var(--accent);
-            box-shadow: var(--shadow-md), var(--shadow-glow);
-        }
-
-        .staff-card.principal-card .staff-photo {
-            height: 280px;
-        }
-
-        .staff-card.principal-card .staff-name {
-            font-size: 18px;
-        }
-
-        .staff-card.principal-card .staff-role {
-            font-size: 14px;
-            background: var(--accent);
-            color: var(--primary-dark);
-            display: inline-block;
-            padding: 3px 14px;
-            border-radius: 50px;
-            font-weight: 600;
-        }
-
-        .staff-photo {
-            width: 100%;
-            height: 260px;
-            background: linear-gradient(135deg, var(--surface-alt), #e8e3d8);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .staff-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            transition: transform 0.6s ease;
-        }
-
-        .staff-card:hover .staff-photo img {
-            transform: scale(1.06);
-        }
-
-        .staff-photo::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 80px;
-            background: linear-gradient(transparent, rgba(255, 255, 255, 0.9));
-            pointer-events: none;
-        }
-
-        .staff-info {
-            padding: 20px 20px 24px;
-            text-align: center;
-        }
-
-        .staff-name {
-            font-family: var(--font-guj);
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 6px;
-        }
-
-        .staff-role {
-            font-family: var(--font-guj);
-            font-size: 13px;
-            color: var(--accent-dark);
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .staff-detail {
-            font-family: var(--font-guj);
-            font-size: 12px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .staff-detail svg {
-            width: 14px;
-            height: 14px;
-            color: var(--accent);
-        }
-
-        /* ===== GALLERY ===== */
-        .gallery { background: var(--bg-warm); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 220px); gap: 16px; }
-        .gallery-item { border-radius: var(--radius-md); overflow: hidden; position: relative; cursor: pointer; transition: var(--transition); }
-        .gallery-item:hover { transform: scale(1.02); box-shadow: var(--shadow-lg); z-index: 2; }
-        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-        .gallery-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .gallery-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .gallery-item:hover .gallery-img img { transform: scale(1.08); }
-        .gallery-item:nth-child(3) .gallery-img { background: linear-gradient(135deg, #e07b3a, #c66a2d); }
-        .gallery-item:nth-child(4) .gallery-img { background: linear-gradient(135deg, #3a7bd5, #2d5fa8); }
-        .gallery-item:nth-child(5) .gallery-img { background: linear-gradient(135deg, #8e44ad, #6c3483); }
-        .gallery-img-placeholder { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .gallery-img-placeholder svg { width: 40px; height: 40px; color: rgba(255, 255, 255, 0.4); }
-        .gallery-img-placeholder span { font-family: var(--font-guj); font-size: 13px; color: rgba(255, 255, 255, 0.5); }
-        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(26, 71, 42, 0.85)); opacity: 0; transition: var(--transition); display: flex; align-items: flex-end; padding: 20px; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-overlay-text { font-family: var(--font-guj); font-size: 14px; font-weight: 600; color: #fff; }
-
-        /* ===== CONTACT ===== */
-        .contact { background: radial-gradient(ellipse at 90% 10%, rgba(212, 168, 67, 0.05) 0%, transparent 50%), var(--bg); }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
-        .contact-info-cards { display: flex; flex-direction: column; gap: 20px; }
-        .contact-card { display: flex; gap: 18px; padding: 24px; background: var(--surface); border-radius: var(--radius-md); border: 1px solid var(--border); transition: var(--transition); }
-        .contact-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateX(4px); }
-        .contact-card-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .contact-card-icon svg { width: 24px; height: 24px; color: var(--accent); }
-        .contact-card-content h4 { font-family: var(--font-guj); font-size: 15px; font-weight: 600; color: var(--primary-dark); margin-bottom: 6px; }
-        .contact-card-content p { font-family: var(--font-guj); font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
-        .contact-card-content a { color: var(--accent-dark); font-weight: 500; transition: var(--transition); }
-        .contact-card-content a:hover { color: var(--primary); }
-        .map-wrapper { margin-top: 20px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); height: 240px; position: relative; }
-        .map-wrapper iframe { width: 100%; height: 100%; border: 0; }
-        .map-link-overlay {
-            position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-            background: var(--primary); color: var(--accent); font-family: var(--font-guj);
-            font-size: 13px; font-weight: 600; padding: 8px 20px; border-radius: 50px;
-            box-shadow: var(--shadow-md); transition: var(--transition); z-index: 2;
-        }
-        .map-link-overlay:hover { background: var(--accent); color: var(--primary-dark); transform: translateX(-50%) translateY(-2px); }
-        .contact-form-wrapper { background: var(--surface); border-radius: var(--radius-lg); padding: 40px; border: 1px solid var(--border); box-shadow: var(--shadow-md); }
-        .contact-form-title { font-family: var(--font-guj); font-size: 22px; font-weight: 700; color: var(--primary-dark); margin-bottom: 6px; }
-        .contact-form-subtitle { font-family: var(--font-guj); font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .form-group { margin-bottom: 16px; }
-        .form-group label { display: block; font-family: var(--font-guj); font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-            font-family: var(--font-guj); font-size: 14px; color: var(--text-primary);
-            background: var(--bg); transition: var(--transition); outline: none;
-        }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26, 71, 42, 0.1); }
-        .form-group textarea { resize: vertical; min-height: 100px; }
-        .btn-submit {
-            width: 100%; padding: 14px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: var(--text-on-dark); border: none; border-radius: var(--radius-sm);
-            font-family: var(--font-guj); font-size: 16px; font-weight: 600; cursor: pointer; transition: var(--transition);
-        }
-        .btn-submit:hover { background: linear-gradient(135deg, var(--primary-light), var(--primary)); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-        /* ===== FOOTER ===== */
-        .footer { background: var(--primary-dark); color: var(--text-on-dark); position: relative; overflow: hidden; }
-        .footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--saffron), var(--accent)); }
-        .footer-main { padding: 64px 0 40px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; }
-        .footer-brand .logo-text-main { font-size: 18px; margin-bottom: 12px; }
-        .footer-brand p { font-family: var(--font-guj); font-size: 14px; color: rgba(240, 236, 228, 0.6); line-height: 1.8; margin-bottom: 20px; }
-        .footer-social { display: flex; gap: 10px; }
-        .footer-social a { width: 40px; height: 40px; background: rgba(255, 255, 255, 0.08); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; transition: var(--transition); }
-        .footer-social a:hover { background: var(--accent); transform: translateY(-2px); }
-        .footer-social a svg { width: 18px; height: 18px; color: rgba(240, 236, 228, 0.7); }
-        .footer-social a:hover svg { color: var(--primary-dark); }
-        .footer-col h4 { font-family: var(--font-guj); font-size: 15px; font-weight: 600; color: var(--accent); margin-bottom: 20px; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { font-family: var(--font-guj); font-size: 14px; color: rgba(240, 236, 228, 0.6); transition: var(--transition); display: flex; align-items: center; gap: 8px; }
-        .footer-col ul li a::before { content: ''; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; opacity: 0; transition: var(--transition); }
-        .footer-col ul li a:hover { color: var(--accent); transform: translateX(4px); }
-        .footer-col ul li a:hover::before { opacity: 1; }
-        .footer-bottom { padding: 20px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-        .footer-bottom p { font-family: var(--font-guj); font-size: 13px; color: rgba(240, 236, 228, 0.4); }
-        .footer-bottom-links { display: flex; gap: 24px; }
-        .footer-bottom-links a { font-family: var(--font-guj); font-size: 13px; color: rgba(240, 236, 228, 0.4); transition: var(--transition); }
-        .footer-bottom-links a:hover { color: var(--accent); }
-
-        /* ===== SCROLL TOP ===== */
-        .scroll-top {
-            position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px;
-            background: var(--primary); color: var(--accent); border: none; border-radius: 50%;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            box-shadow: var(--shadow-md); opacity: 0; visibility: hidden; transform: translateY(20px);
-            transition: var(--transition); z-index: 999;
-        }
-        .scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
-        .scroll-top:hover { background: var(--accent); color: var(--primary-dark); transform: translateY(-3px); }
-        .scroll-top svg { width: 22px; height: 22px; }
-
-        /* ===== SCROLL REVEAL ===== */
-        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .hero-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .hero-desc { margin: 0 auto 36px; }
-            .hero-actions { justify-content: center; }
-            .hero-visual { max-width: 500px; margin: 0 auto; }
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .about-image-main { height: 300px; }
-            .highlights-grid { grid-template-columns: repeat(2, 1fr); }
-            .staff-grid { grid-template-columns: repeat(2, 1fr); }
-            .staff-card.principal-card { grid-column: span 2; max-width: 400px; margin: 0 auto; justify-self: center; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 200px); }
-            .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .footer-main { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
-                background: var(--primary-dark); flex-direction: column; justify-content: center;
-                gap: 4px; padding: 20px; transition: right 0.4s ease; box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
-            }
-            .nav-links.open { right: 0; }
-            .nav-links a { font-size: 16px; padding: 12px 20px; width: 100%; }
-            .hamburger { display: flex; }
-            .info-strip-inner { grid-template-columns: repeat(2, 1fr); }
-            .info-strip-item { border-bottom: 1px solid var(--border); }
-            .info-strip-item:nth-child(2) { border-right: none; }
-            .hero-float-card { display: none; }
-            .about-features { grid-template-columns: 1fr; }
-            .highlights-grid { grid-template-columns: 1fr; }
-            .staff-grid { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
-            .staff-card.principal-card { grid-column: span 1; max-width: 100%; }
-            .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .gallery-item:nth-child(1) { grid-column: span 1; }
-            .gallery-item { height: 200px; }
-            .form-row { grid-template-columns: 1fr; }
-            .footer-main { grid-template-columns: 1fr; gap: 32px; }
-            .footer-bottom { flex-direction: column; text-align: center; }
-            .section { padding: 70px 0; }
-        }
-
-        @media (max-width: 480px) {
-            .info-strip-inner { grid-template-columns: 1fr; }
-            .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-            .hero-stat-number { font-size: 22px; }
-            .contact-form-wrapper { padding: 24px; }
-        }
-    </style>
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-c{grid-template-columns:1fr;gap:40px;text-align:center}
+  .hero-t p.desc{margin:0 auto 36px}.acts{justify-content:center}
+  .hero-v{max-width:500px;margin:0 auto}
+  .ab-g{grid-template-columns:1fr;gap:40px}
+  .ab-img .pic{height:300px}
+  .hl-g{grid-template-columns:repeat(2,1fr)}
+  .st-g{grid-template-columns:repeat(2,1fr)}
+  .sc-pr{grid-column:span 2;max-width:400px;margin:0 auto;justify-self:center}
+  .gal-g{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,200px)}
+  .gi:first-child{grid-column:span 2;grid-row:span 1}
+  .cnt-g{grid-template-columns:1fr}
+  .ft-g{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:var(--pd);flex-direction:column;justify-content:center;gap:4px;padding:20px;transition:right .4s ease;box-shadow:-10px 0 40px rgba(0,0,0,.3)}
+  .nav.open{right:0}.nav a{font-size:16px;padding:12px 20px;width:100%}
+  .burger{display:flex}
+  .strip-g{grid-template-columns:repeat(2,1fr)}.si{border-bottom:1px solid var(--bd)}.si:nth-child(2){border-right:none}
+  .fl-card{display:none}.feats{grid-template-columns:1fr}
+  .hl-g{grid-template-columns:1fr}
+  .st-g{grid-template-columns:1fr;max-width:340px;margin:0 auto}.sc-pr{grid-column:span 1;max-width:100%}
+  .gal-g{grid-template-columns:1fr;grid-template-rows:auto}.gi:first-child{grid-column:span 1}.gi{height:200px}
+  .fr{grid-template-columns:1fr}.ft-g{grid-template-columns:1fr;gap:28px}
+  .ft-btm{flex-direction:column;text-align:center}
+  .sec{padding:70px 0}
+}
+@media(max-width:480px){
+  .strip-g{grid-template-columns:1fr}
+  .stats{gap:8px}.stat b{font-size:22px}
+  .cf{padding:24px}
+}
+</style>
 </head>
 <body>
 
-    <!-- ===================== HEADER ===================== -->
-    <header class="header" id="header">
-        <div class="header-inner">
-            <a href="#home" class="logo-group">
-                <div class="logo-icon">
-                    <img src="logo.png" alt="શ્રી દહિડા પ્રાથમિક શાળા લોગો">
-                </div>
-                <div class="logo-text">
-                    <span class="logo-text-main">શ્રી દહિડા પ્રાથમિક શાળા</span>
-                    <span class="logo-text-sub">Govt. Primary School · Est. 1911</span>
-                </div>
-            </a>
-            <nav>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#home" class="active">શરૂઆત</a></li>
-                    <li><a href="#about">અમારા વિશે</a></li>
-                    <li><a href="#facilities">સુવિધાઓ</a></li>
-                    <li><a href="#staff">શિક્ષક મંડળ</a></li>
-                    <li><a href="#gallery">ગેલેરી</a></li>
-                    <li><a href="#contact" class="nav-cta">સંપર્ક</a></li>
-                </ul>
-            </nav>
-            <div class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </header>
+<!-- HEADER -->
+<header class="hdr" id="hdr">
+<div class="hdr-in">
+  <a href="#home" class="logo-g">
+    <div class="logo-i"><img src="logo.png" alt="શાળા લોગો"></div>
+    <div class="logo-t"><span class="logo-m">શ્રી દહિડા પ્રાથમિક શાળા</span><span class="logo-s">Govt. Primary School · Est. 1911</span></div>
+  </a>
+  <ul class="nav" id="nav">
+    <li><a href="#home" class="on">શરૂઆત</a></li>
+    <li><a href="#about">અમારા વિશે</a></li>
+    <li><a href="#facilities">સુવિધાઓ</a></li>
+    <li><a href="#staff">શિક્ષક મંડળ</a></li>
+    <li><a href="#gallery">ગેલેરી</a></li>
+    <li><a href="#contact" class="cta">સંપર્ક</a></li>
+  </ul>
+  <div class="burger" id="brg"><span></span><span></span><span></span></div>
+</div>
+</header>
 
-    <!-- ===================== HERO ===================== -->
-    <section class="hero" id="home">
-        <div class="hero-deco hero-deco-1"></div>
-        <div class="hero-deco hero-deco-2"></div>
-        <div class="hero-deco hero-deco-3"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-badge">
-                        <span class="hero-badge-dot"></span>
-                        સ્થાપિત: ૧૯૧૧ · ૧૦૦+ વર્ષની શૈક્ષણિક પરંપરા
-                    </div>
-                    <h1 class="hero-title">શ્રી દહિડા પ્રાથમિક શાળા</h1>
-                    <p class="hero-title-en">Shri Dahida Government Primary School</p>
-                    <p class="hero-desc">જ્ઞાન, સંસ્કાર અને પ્રગતિના માર્ગે દરેક બાળકને આગળ વધારતી અમરેલી જિલ્લાની ગૌરવસભર શૈક્ષણિક સંસ્થા. ધોરણ ૧ થી ૮ સુધી ગુણવત્તાસભર અને મૂલ્ય આધારિત શિક્ષણ.</p>
-                    <div class="hero-actions">
-                        <a href="#about" class="btn btn-primary">વધુ જાણો <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-                        <a href="#contact" class="btn btn-outline">સંપર્ક કરો <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-card-main">
-                        <div class="hero-school-image">
-                            <img src="school6.jpg" alt="શ્રી દહિડા પ્રાથમિક શાળા">
-                        </div>
-                        <div class="hero-stats">
-                            <div class="hero-stat"><div class="hero-stat-number" data-count="113">0</div><div class="hero-stat-label">વર્ષનો ઇતિહાસ</div></div>
-                            <div class="hero-stat"><div class="hero-stat-number" data-count="8">0</div><div class="hero-stat-label">ધોરણ (૧-૮)</div></div>
-                            <div class="hero-stat"><div class="hero-stat-number" data-count="1000">0</div><div class="hero-stat-label">પૂર્વ વિદ્યાર્થી+</div></div>
-                        </div>
-                    </div>
-                    <div class="hero-float-card hero-float-card-1"><div class="float-card-icon">🏆</div><div class="float-card-title">ગુણવત્તાસભર શિક્ષણ</div><div class="float-card-desc">મૂલ્ય આધારિત શિક્ષણ</div></div>
-                    <div class="hero-float-card hero-float-card-2"><div class="float-card-icon">💻</div><div class="float-card-title">ડિજિટલ શિક્ષણ</div><div class="float-card-desc">આધુનિક ટેકનોલોજી</div></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== INFO STRIP ===================== -->
-    <div class="info-strip">
-        <div class="container">
-            <div class="info-strip-inner">
-                <div class="info-strip-item reveal">
-                    <div class="info-strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/></svg></div>
-                    <div class="info-strip-text"><h4>સરકારી શાળા</h4><p>માન્યતા પ્રાપ્ત</p></div>
-                </div>
-                <div class="info-strip-item reveal reveal-delay-1">
-                    <div class="info-strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg></div>
-                    <div class="info-strip-text"><h4>ધોરણ ૧ થી ૮</h4><p>ગુજરાતી માધ્યમ</p></div>
-                </div>
-                <div class="info-strip-item reveal reveal-delay-2">
-                    <div class="info-strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-                    <div class="info-strip-text"><h4>સહશિક્ષણ</h4><p>સર્વાંગી વિકાસ</p></div>
-                </div>
-                <div class="info-strip-item reveal reveal-delay-3">
-                    <div class="info-strip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-                    <div class="info-strip-text"><h4>૧૦૦+ વર્ષ</h4><p>શિક્ષણની પરંપરા</p></div>
-                </div>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="hd1"></div><div class="hd2"></div><div class="hd3"></div>
+<div class="container">
+  <div class="hero-c">
+    <div class="hero-t">
+      <div class="badge"><i></i> સ્થાપિત: ૧૯૧૧ · ૧૦૦+ વર્ષની શૈક્ષણિક પરંપરા</div>
+      <h1>શ્રી દહિડા પ્રાથમિક શાળા</h1>
+      <p class="en">Shri Dahida Government Primary School</p>
+      <p class="desc">જ્ઞાન, સંસ્કાર અને પ્રગતિના માર્ગે દરેક બાળકને આગળ વધારતી અમરેલી જિલ્લાની ગૌરવસભર શૈક્ષણિક સંસ્થા. ધોરણ ૧ થી ૮ સુધી ગુણવત્તાસભર અને મૂલ્ય આધારિત શિક્ષણ.</p>
+      <div class="acts">
+        <a href="#about" class="btn btn-p">વધુ જાણો <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="btn btn-o">સંપર્ક કરો <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></a>
+      </div>
     </div>
-
-    <!-- ===================== ABOUT ===================== -->
-    <section class="section about" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image-area reveal">
-                    <div class="about-image-main">
-                        <img src="school7.jpg" alt="શ્રી દહિડા પ્રાથમિક શાળા ઇમારત">
-                    </div>
-                    <div class="about-year-badge"><span>1911</span><span>સ્થાપના</span></div>
-                </div>
-                <div class="about-content">
-                    <div class="section-tag">અમારા વિશે</div>
-                    <h2 class="section-title">શ્રી દહિડા પ્રાથમિક શાળા</h2>
-                    <p class="section-title-en">About Our School</p>
-                    <p class="about-text reveal">દહિડા ગામની ગૌરવસભર અને ઐતિહાસિક શૈક્ષણિક સંસ્થા તરીકે ઓળખાતી શ્રી દહિડા પ્રાથમિક શાળા વર્ષ ૧૯૧૧માં સ્થાપિત થયેલી સરકારી શાળા છે. છેલ્લા એક સદીથી વધુ સમયથી આ શાળા ગ્રામ્ય વિસ્તારમાં શિક્ષણનો દીપ પ્રગટાવી રહી છે.</p>
-                    <p class="about-text reveal">શાળા ગુજરાત રાજ્યના અમરેલી જિલ્લામાં આવેલ દહિડા ગામમાં સ્થિત છે. ગુજરાતી માધ્યમ દ્વારા શિક્ષણ આપવામાં આવતી આ શાળા ધોરણ ૧ થી ૮ સુધીના વિદ્યાર્થીઓને ગુણવત્તાસભર અને મૂલ્ય આધારિત શિક્ષણ પ્રદાન કરે છે.</p>
-                    <div class="about-features reveal">
-                        <div class="about-feature"><div class="about-feature-icon">📖</div><div class="about-feature-text">ગુણવત્તાસભર શૈક્ષણિક અભ્યાસક્રમ</div></div>
-                        <div class="about-feature"><div class="about-feature-icon">💻</div><div class="about-feature-text">ડિજિટલ અને કમ્પ્યુટર શિક્ષણ</div></div>
-                        <div class="about-feature"><div class="about-feature-icon">📚</div><div class="about-feature-text">પુસ્તકાલય સુવિધા</div></div>
-                        <div class="about-feature"><div class="about-feature-icon">⚽</div><div class="about-feature-text">રમતગમત અને સહપાઠ્ય પ્રવૃત્તિઓ</div></div>
-                        <div class="about-feature"><div class="about-feature-icon">🍛</div><div class="about-feature-text">મધ્યાહન ભોજન યોજના</div></div>
-                        <div class="about-feature"><div class="about-feature-icon">🛡️</div><div class="about-feature-text">સ્વચ્છ અને સુરક્ષિત પરિસર</div></div>
-                    </div>
-                    <p class="about-text reveal" style="margin-bottom: 0; font-style: italic; border-left: 3px solid var(--accent); padding-left: 16px;">શિક્ષણ સાથે સંસ્કાર, શિસ્ત, રાષ્ટ્રપ્રેમ અને માનવતાના મૂલ્યોનું સંવર્ધન કરવામાં આવે છે.</p>
-                </div>
-            </div>
+    <div class="hero-v">
+      <div class="hero-card">
+        <div class="hero-img"><img src="school6.jpg" alt="શાળા"></div>
+        <div class="stats">
+          <div class="stat"><b data-c="113">0</b><span>વર્ષનો ઇતિહાસ</span></div>
+          <div class="stat"><b data-c="8">0</b><span>ધોરણ (૧-૮)</span></div>
+          <div class="stat"><b data-c="1000">0</b><span>પૂર્વ વિદ્યાર્થી+</span></div>
         </div>
-    </section>
+      </div>
+      <div class="fl-card fl1"><em>🏆</em><b>ગુણવત્તાસભર શિક્ષણ</b><small>મૂલ્ય આધારિત</small></div>
+      <div class="fl-card fl2"><em>💻</em><b>ડિજિટલ શિક્ષણ</b><small>આધુનિક ટેકનોલોજી</small></div>
+    </div>
+  </div>
+</div>
+</section>
 
-    <!-- ===================== FACILITIES ===================== -->
-    <section class="section highlights" id="facilities">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">સુવિધાઓ</div>
-                <h2 class="section-title">અમારી શાળાની સુવિધાઓ</h2>
-                <p class="section-title-en">Our School Facilities</p>
-                <p class="section-desc">આધુનિક શિક્ષણ વ્યવસ્થાને અનુરૂપ શાળામાં વિવિધ સુવિધાઓ ઉપલબ્ધ છે</p>
-            </div>
-            <div class="highlights-grid">
-                <div class="highlight-card reveal"><div class="highlight-icon">💻</div><h3 class="highlight-title">કમ્પ્યુટર લેબ</h3><p class="highlight-desc">કમ્પ્યુટર આધારિત અભ્યાસ અને ડિજિટલ સાક્ષરતા</p></div>
-                <div class="highlight-card reveal reveal-delay-1"><div class="highlight-icon">📚</div><h3 class="highlight-title">પુસ્તકાલય</h3><p class="highlight-desc">વિવિધ પુસ્તકો અને અભ્યાસ સામગ્રીથી સજ્જ</p></div>
-                <div class="highlight-card reveal reveal-delay-2"><div class="highlight-icon">🏃</div><h3 class="highlight-title">રમતનું મેદાન</h3><p class="highlight-desc">વિશાળ રમત મેદાન જ્યાં બાળકો રમી શકે છે</p></div>
-                <div class="highlight-card reveal reveal-delay-3"><div class="highlight-icon">🍛</div><h3 class="highlight-title">મધ્યાહન ભોજન</h3><p class="highlight-desc">સરકારી યોજના અંતર્ગત પૌષ્ટિક ભોજન</p></div>
-                <div class="highlight-card reveal"><div class="highlight-icon">💧</div><h3 class="highlight-title">શુદ્ધ પાણી</h3><p class="highlight-desc">પીવાના શુદ્ધ પાણીની સંપૂર્ણ સુવિધા</p></div>
-                <div class="highlight-card reveal reveal-delay-1"><div class="highlight-icon">🎨</div><h3 class="highlight-title">સર્જનાત્મક પ્રવૃત્તિઓ</h3><p class="highlight-desc">ચિત્રકળા, સંગીત અને વિવિધ કળા પ્રવૃત્તિઓ</p></div>
-                <div class="highlight-card reveal reveal-delay-2"><div class="highlight-icon">🛡️</div><h3 class="highlight-title">સુરક્ષિત પરિસર</h3><p class="highlight-desc">CCTV અને સુરક્ષા સાથે સ્વચ્છ શાળા પરિસર</p></div>
-                <div class="highlight-card reveal reveal-delay-3"><div class="highlight-icon">📖</div><h3 class="highlight-title">ડિજિટલ શિક્ષણ</h3><p class="highlight-desc">આધુનિક ટેકનોલોજી સાથે શિક્ષણ</p></div>
-            </div>
-        </div>
-    </section>
+<!-- INFO STRIP -->
+<div class="strip">
+<div class="container">
+  <div class="strip-g">
+    <div class="si rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/></svg></i><div><h4>સરકારી શાળા</h4><small>માન્યતા પ્રાપ્ત</small></div></div>
+    <div class="si rv rv-d1"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg></i><div><h4>ધોરણ ૧ થી ૮</h4><small>ગુજરાતી માધ્યમ</small></div></div>
+    <div class="si rv rv-d2"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></i><div><h4>સહશિક્ષણ</h4><small>સર્વાંગી વિકાસ</small></div></div>
+    <div class="si rv rv-d3"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></i><div><h4>૧૦૦+ વર્ષ</h4><small>શિક્ષણની પરંપરા</small></div></div>
+  </div>
+</div>
+</div>
 
-    <!-- ===================== STAFF - UPDATED ===================== -->
-    <section class="section staff" id="staff">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">શિક્ષક મંડળ</div>
-                <h2 class="section-title">અમારા સમર્પિત શિક્ષકો</h2>
-                <p class="section-title-en">Our Dedicated Staff</p>
-                <p class="section-desc">અનુભવી અને પ્રતિબદ્ધ શિક્ષકમંડળ વિદ્યાર્થીઓને શૈક્ષણિક, નૈતિક અને સામાજિક મૂલ્યોનું શિક્ષણ આપે છે</p>
-            </div>
+<!-- ABOUT -->
+<section class="sec about" id="about">
+<div class="container">
+  <div class="ab-g">
+    <div class="ab-img rv">
+      <div class="pic"><img src="school7.jpg" alt="શાળા ઇમારત"></div>
+      <div class="ab-badge"><b>1911</b><small>સ્થાપના</small></div>
+    </div>
+    <div class="ab-c">
+      <div class="tag">અમારા વિશે</div>
+      <h2>શ્રી દહિડા પ્રાથમિક શાળા</h2>
+      <p class="en">About Our School</p>
+      <p class="ab-t rv">દહિડા ગામની ગૌરવસભર અને ઐતિહાસિક શૈક્ષણિક સંસ્થા તરીકે ઓળખાતી શ્રી દહિડા પ્રાથમિક શાળા વર્ષ ૧૯૧૧માં સ્થાપિત થયેલી સરકારી શાળા છે. છેલ્લા એક સદીથી વધુ સમયથી આ શાળા ગ્રામ્ય વિસ્તારમાં શિક્ષણનો દીપ પ્રગટાવી રહી છે.</p>
+      <p class="ab-t rv">શાળા ગુજરાત રાજ્યના અમરેલી જિલ્લામાં આવેલ દહિડા ગામમાં સ્થિત છે. ગુજરાતી માધ્યમ દ્વારા શિક્ષણ આપવામાં આવતી આ શાળા ધોરણ ૧ થી ૮ સુધીના વિદ્યાર્થીઓને ગુણવત્તાસભર અને મૂલ્ય આધારિત શિક્ષણ પ્રદાન કરે છે.</p>
+      <div class="feats rv">
+        <div class="ft"><em>📖</em><span>ગુણવત્તાસભર શૈક્ષણિક અભ્યાસક્રમ</span></div>
+        <div class="ft"><em>💻</em><span>ડિજિટલ અને કમ્પ્યુટર શિક્ષણ</span></div>
+        <div class="ft"><em>📚</em><span>પુસ્તકાલય સુવિધા</span></div>
+        <div class="ft"><em>⚽</em><span>રમતગમત અને સહપાઠ્ય પ્રવૃત્તિઓ</span></div>
+        <div class="ft"><em>🍛</em><span>મધ્યાહન ભોજન યોજના</span></div>
+        <div class="ft"><em>🛡️</em><span>સ્વચ્છ અને સુરક્ષિત પરિસર</span></div>
+      </div>
+      <p class="ab-quote rv">શિક્ષણ સાથે સંસ્કાર, શિસ્ત, રાષ્ટ્રપ્રેમ અને માનવતાના મૂલ્યોનું સંવર્ધન કરવામાં આવે છે.</p>
+    </div>
+  </div>
+</div>
+</section>
 
-            <div class="staff-grid">
+<!-- FACILITIES -->
+<section class="sec hl" id="facilities">
+<div class="container">
+  <div class="sec-h">
+    <div class="tag">સુવિધાઓ</div>
+    <h2>અમારી શાળાની સુવિધાઓ</h2>
+    <p class="en">Our School Facilities</p>
+    <p>આધુનિક શિક્ષણ વ્યવસ્થાને અનુરૂપ શાળામાં વિવિધ સુવિધાઓ ઉપલબ્ધ છે</p>
+  </div>
+  <div class="hl-g">
+    <div class="hc rv"><em>💻</em><h3>કમ્પ્યુટર લેબ</h3><p>કમ્પ્યુટર આધારિત અભ્યાસ અને ડિજિટલ સાક્ષરતા</p></div>
+    <div class="hc rv rv-d1"><em>📚</em><h3>પુસ્તકાલય</h3><p>વિવિધ પુસ્તકો અને અભ્યાસ સામગ્રીથી સજ્જ</p></div>
+    <div class="hc rv rv-d2"><em>🏃</em><h3>રમતનું મેદાન</h3><p>વિશાળ રમત મેદાન જ્યાં બાળકો રમી શકે છે</p></div>
+    <div class="hc rv rv-d3"><em>🍛</em><h3>મધ્યાહન ભોજન</h3><p>સરકારી યોજના અંતર્ગત પૌષ્ટિક ભોજન</p></div>
+    <div class="hc rv"><em>💧</em><h3>શુદ્ધ પાણી</h3><p>પીવાના શુદ્ધ પાણીની સંપૂર્ણ સુવિધા</p></div>
+    <div class="hc rv rv-d1"><em>🎨</em><h3>સર્જનાત્મક પ્રવૃત્તિઓ</h3><p>ચિત્રકળા, સંગીત અને વિવિધ કળા પ્રવૃત્તિઓ</p></div>
+    <div class="hc rv rv-d2"><em>🛡️</em><h3>સુરક્ષિત પરિસર</h3><p>CCTV અને સુરક્ષા સાથે સ્વચ્છ શાળા પરિસર</p></div>
+    <div class="hc rv rv-d3"><em>📖</em><h3>ડિજિટલ શિક્ષણ</h3><p>આધુનિક ટેકનોલોજી સાથે શિક્ષણ</p></div>
+  </div>
+</div>
+</section>
 
-                <!-- PRINCIPAL - Centered on first row -->
-                <div class="staff-card principal-card reveal">
-                    <div class="staff-photo">
-                        <img src="principal.jpg" alt="આચાર્યશ્રી જિતેન્દ્રભાઈ દવે">
-                    </div>
-                    <div class="staff-info">
-                        <h3 class="staff-name">શ્રી જિતેન્દ્રભાઈ દવે</h3>
-                        <p class="staff-role">આચાર્યશ્રી</p>
-                        <p class="staff-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>
-                            મુખ્ય શિક્ષક · શાળા વ્યવસ્થાપન
-                        </p>
-                    </div>
-                </div>
+<!-- STAFF -->
+<section class="sec staff" id="staff">
+<div class="container">
+  <div class="sec-h">
+    <div class="tag">શિક્ષક મંડળ</div>
+    <h2>અમારા સમર્પિત શિક્ષકો</h2>
+    <p class="en">Our Dedicated Staff</p>
+    <p>અનુભવી અને પ્રતિબદ્ધ શિક્ષકમંડળ વિદ્યાર્થીઓને શૈક્ષણિક, નૈતિક અને સામાજિક મૂલ્યોનું શિક્ષણ આપે છે</p>
+  </div>
+  <div class="st-g">
+    <div class="sc sc-pr rv">
+      <div class="sp"><img src="principal.jpg" alt="આચાર્યશ્રી"></div>
+      <div class="si2"><h3 class="sn">શ્રી જિતેન્દ્રભાઈ દવે</h3><p class="sr">આચાર્યશ્રી</p><p class="sd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>મુખ્ય શિક્ષક · શાળા વ્યવસ્થાપન</p></div>
+    </div>
+    <div></div>
+    <div class="sc rv">
+      <div class="sp"><img src="teacher1.jpg" alt="અતુલભાઈ લખાણી"></div>
+      <div class="si2"><h3 class="sn">શ્રી અતુલભાઈ લખાણી</h3><p class="sr">શિક્ષક</p><p class="sd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>શિક્ષણ વિભાગ</p></div>
+    </div>
+    <div class="sc rv rv-d1">
+      <div class="sp"><img src="teacher2.jpg" alt="ભૂમિતાબેન ગૌદાણી"></div>
+      <div class="si2"><h3 class="sn">શ્રીમતી ભૂમિતાબેન ગૌદાણી</h3><p class="sr">શિક્ષિકા</p><p class="sd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>શિક્ષણ વિભાગ</p></div>
+    </div>
+    <div class="sc rv rv-d2">
+      <div class="sp"><img src="teacher3.jpg" alt="પ્રજ્ઞેશભાઈ નકરાણી"></div>
+      <div class="si2"><h3 class="sn">શ્રી પ્રજ્ઞેશભાઈ નકરાણી</h3><p class="sr">શિક્ષક</p><p class="sd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>શિક્ષણ વિભાગ</p></div>
+    </div>
+    <div class="sc rv rv-d1">
+      <div class="sp"><img src="teacher4.jpg" alt="જયશ્રીબેન કુંભાણી"></div>
+      <div class="si2"><h3 class="sn">શ્રીમતી જયશ્રીબેન કુંભાણી</h3><p class="sr">શિક્ષિકા</p><p class="sd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>શિક્ષણ વિભાગ</p></div>
+    </div>
+    <div class="sc rv rv-d2">
+      <div class="sp"><img src="teacher5.jpg" alt="વૈભવભાઈ આસર"></div>
+      <div class="si2"><h3 class="sn">શ્રી વૈભવભાઈ આસર</h3><p class="sr">શિક્ષક</p><p class="sd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>શિક્ષણ વિભાગ</p></div>
+    </div>
+  </div>
+</div>
+</section>
 
-                <!-- Empty cell for grid alignment (principal centered) -->
-                <div></div>
+<!-- GALLERY -->
+<section class="sec gal" id="gallery">
+<div class="container">
+  <div class="sec-h">
+    <div class="tag">ફોટો ગેલેરી</div>
+    <h2>શાળાની યાદગાર ક્ષણો</h2>
+    <p class="en">Memorable Moments</p>
+    <p>વિદ્યાર્થીઓ, કાર્યક્રમો અને શાળાની પ્રવૃત્તિઓની તસવીરો</p>
+  </div>
+  <div class="gal-g">
+    <div class="gi rv"><div class="gi-i"><img src="school5.jpg" alt="શાળા"></div><div class="gi-ov"><span>શાળા પરિસર</span></div></div>
+    <div class="gi rv rv-d1"><div class="gi-i"><img src="student2.jpg" alt="વાર્ષિકોત્સવ"></div><div class="gi-ov"><span>વાર્ષિકોત્સવ</span></div></div>
+    <div class="gi rv rv-d2"><div class="gi-i"><div class="gi-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>રમતગમત દિવસ</span></div></div><div class="gi-ov"><span>ક્રીડા સ્પર્ધા</span></div></div>
+    <div class="gi rv rv-d1"><div class="gi-i"><div class="gi-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>સ્વાતંત્ર્ય દિવસ</span></div></div><div class="gi-ov"><span>સ્વાતંત્ર્ય પર્વ</span></div></div>
+    <div class="gi rv rv-d2"><div class="gi-i"><div class="gi-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>વર્ગખંડ</span></div></div><div class="gi-ov"><span>વર્ગખંડ પ્રવૃત્તિ</span></div></div>
+  </div>
+</div>
+</section>
 
-                <!-- TEACHER 1 -->
-                <div class="staff-card reveal">
-                    <div class="staff-photo">
-                        <img src="teacher1.jpg" alt="શ્રી અતુલભાઈ લખાણી">
-                    </div>
-                    <div class="staff-info">
-                        <h3 class="staff-name">શ્રી અતુલભાઈ લખાણી</h3>
-                        <p class="staff-role">શિક્ષક</p>
-                        <p class="staff-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-                            શિક્ષણ વિભાગ
-                        </p>
-                    </div>
-                </div>
+<!-- CONTACT -->
+<section class="sec cnt" id="contact">
+<div class="container">
+  <div class="sec-h">
+    <div class="tag">સંપર્ક</div>
+    <h2>અમારો સંપર્ક કરો</h2>
+    <p class="en">Get In Touch</p>
+  </div>
+  <div class="cnt-g">
+    <div class="cnt-cs">
+      <div class="cc rv"><div class="cc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>સરનામું</h4><p>શ્રી દહીડા પ્રાથમિક શાળા,<br>મું: દહીડા ગામ, તા: અમરેલી,<br>જિ: અમરેલી - ૩૬૫૬૦૧</p></div></div>
+      <div class="cc rv rv-d1"><div class="cc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><h4>ફોન નંબર</h4><p><a href="tel:+919824298001">+91 98242 98001</a></p></div></div>
+      <div class="cc rv rv-d2"><div class="cc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h4>શાળાનો સમય</h4><p>સોમવાર થી શનિવાર<br>સવારે ૧૦:૩૦ - સાંજે ૪:૩૦</p></div></div>
+      <div class="cc rv rv-d3"><div class="cc-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><h4>ઇમેઇલ</h4><p><a href="mailto:shridahidaschool@gmail.com">shridahidaschool@gmail.com</a></p></div></div>
+      <div class="map-w rv">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d71.2!3d21.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDM2JzAwLjAiTiA3McKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a href="https://maps.app.goo.gl/pH2MQHLoEAxr4NQS9?g_st=atm" target="_blank" rel="noopener" class="map-btn">📍 Google Maps પર જુઓ</a>
+      </div>
+    </div>
+    <div class="cf rv">
+      <h3>અમને સંદેશ મોકલો</h3>
+      <p class="sub">તમારો પ્રશ્ન અથવા સૂચન અમને જણાવો</p>
+      <form id="cf">
+        <div class="fr"><div class="fg"><label>તમારું નામ *</label><input type="text" id="nm" placeholder="નામ દાખલ કરો" required></div><div class="fg"><label>ફોન નંબર *</label><input type="tel" id="ph" placeholder="ફોન નંબર" required></div></div>
+        <div class="fg"><label>ઇમેઇલ</label><input type="email" id="em" placeholder="ઇમેઇલ દાખલ કરો"></div>
+        <div class="fg"><label>વિષય</label><select id="su"><option value="">વિષય પસંદ કરો</option><option>પ્રવેશ અંગે</option><option>સામાન્ય માહિતી</option><option>ફરિયાદ</option><option>સૂચન</option><option>અન્ય</option></select></div>
+        <div class="fg"><label>તમારો સંદેશ *</label><textarea id="mg" placeholder="અહીં લખો..." required></textarea></div>
+        <button type="submit" class="btn-s">સંદેશ મોકલો →</button>
+      </form>
+    </div>
+  </div>
+</div>
+</section>
 
-                <!-- TEACHER 2 -->
-                <div class="staff-card reveal reveal-delay-1">
-                    <div class="staff-photo">
-                        <img src="teacher2.jpg" alt="શ્રીમતી ભૂમિતાબેન ગૌદાણી">
-                    </div>
-                    <div class="staff-info">
-                        <h3 class="staff-name">શ્રીમતી ભૂમિતાબેન ગૌદાણી</h3>
-                        <p class="staff-role">શિક્ષિકા</p>
-                        <p class="staff-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-                            શિક્ષણ વિભાગ
-                        </p>
-                    </div>
-                </div>
+<!-- FOOTER -->
+<footer class="ft-main">
+<div class="container">
+  <div class="ft-g">
+    <div class="fb">
+      <div class="logo-t"><span class="logo-m">શ્રી દહિડા પ્રાથમિક શાળા</span></div>
+      <p>વર્ષ ૧૯૧૧થી દહિડા ગામમાં શિક્ષણનો દીપ પ્રગટાવતી સરકારી શાળા. જ્ઞાન, સંસ્કાર અને પ્રગતિના માર્ગે વિદ્યાર્થીઓને આગળ વધારવાનું અમારું ધ્યેય.</p>
+      <div class="f-social">
+        <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#1a472a"/></svg></a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+    </div>
+    <div class="fc"><h4>ઝડપી લિંક્સ</h4><ul><li><a href="#home">શરૂઆત</a></li><li><a href="#about">અમારા વિશે</a></li><li><a href="#facilities">સુવિધાઓ</a></li><li><a href="#staff">શિક્ષક મંડળ</a></li><li><a href="#gallery">ગેલેરી</a></li></ul></div>
+    <div class="fc"><h4>સુવિધાઓ</h4><ul><li><a href="#facilities">કમ્પ્યુટર લેબ</a></li><li><a href="#facilities">પુસ્તકાલય</a></li><li><a href="#facilities">રમતનું મેદાન</a></li><li><a href="#facilities">મધ્યાહન ભોજન</a></li><li><a href="#facilities">ડિજિટલ શિક્ષણ</a></li></ul></div>
+    <div class="fc"><h4>સંપર્ક</h4><ul><li><a href="#">દહીડા ગામ, અમરેલી</a></li><li><a href="tel:+919824298001">+91 98242 98001</a></li><li><a href="mailto:shridahidaschool@gmail.com">ઇમેઇલ મોકલો</a></li></ul></div>
+  </div>
+  <div class="ft-btm">
+    <p>&copy; 2025 શ્રી દહિડા પ્રાથમિક શાળા. સર્વાધિકાર સુરક્ષિત.</p>
+    <nav><a href="#">ગોપનીયતા નીતિ</a><a href="#">નિયમો</a></nav>
+  </div>
+</div>
+</footer>
 
-                <!-- TEACHER 3 -->
-                <div class="staff-card reveal reveal-delay-2">
-                    <div class="staff-photo">
-                        <img src="teacher3.jpg" alt="શ્રી પ્રજ્ઞેશભાઈ નકરાણી">
-                    </div>
-                    <div class="staff-info">
-                        <h3 class="staff-name">શ્રી પ્રજ્ઞેશભાઈ નકરાણી</h3>
-                        <p class="staff-role">શિક્ષક</p>
-                        <p class="staff-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-                            શિક્ષણ વિભાગ
-                        </p>
-                    </div>
-                </div>
+<button class="st-top" id="top" aria-label="Top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button>
 
-                <!-- TEACHER 4 -->
-                <div class="staff-card reveal reveal-delay-1">
-                    <div class="staff-photo">
-                        <img src="teacher4.jpg" alt="શ્રીમતી જયશ્રીબેન કુંભાણી">
-                    </div>
-                    <div class="staff-info">
-                        <h3 class="staff-name">શ્રીમતી જયશ્રીબેન કુંભાણી</h3>
-                        <p class="staff-role">શિક્ષિકા</p>
-                        <p class="staff-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-                            શિક્ષણ વિભાગ
-                        </p>
-                    </div>
-                </div>
-
-                <!-- TEACHER 5 -->
-                <div class="staff-card reveal reveal-delay-2">
-                    <div class="staff-photo">
-                        <img src="teacher5.jpg" alt="શ્રી વૈભવભાઈ આસર">
-                    </div>
-                    <div class="staff-info">
-                        <h3 class="staff-name">શ્રી વૈભવભાઈ આસર</h3>
-                        <p class="staff-role">શિક્ષક</p>
-                        <p class="staff-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-                            શિક્ષણ વિભાગ
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== GALLERY ===================== -->
-    <section class="section gallery" id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">ફોટો ગેલેરી</div>
-                <h2 class="section-title">શાળાની યાદગાર ક્ષણો</h2>
-                <p class="section-title-en">Memorable Moments</p>
-                <p class="section-desc">વિદ્યાર્થીઓ, કાર્યક્રમો અને શાળાની પ્રવૃત્તિઓની તસવીરો</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item reveal">
-                    <div class="gallery-img"><img src="school5.jpg" alt="શાળા પરિસર"></div>
-                    <div class="gallery-overlay"><span class="gallery-overlay-text">શાળા પરિસર</span></div>
-                </div>
-                <div class="gallery-item reveal reveal-delay-1">
-                    <div class="gallery-img"><img src="student2.jpg" alt="વાર્ષિકોત્સવ કાર્યક્રમ"></div>
-                    <div class="gallery-overlay"><span class="gallery-overlay-text">વાર્ષિકોત્સવ કાર્યક્રમ</span></div>
-                </div>
-                <div class="gallery-item reveal reveal-delay-2">
-                    <div class="gallery-img"><div class="gallery-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>રમતગમત દિવસ</span></div></div>
-                    <div class="gallery-overlay"><span class="gallery-overlay-text">ક્રીડા સ્પર્ધા</span></div>
-                </div>
-                <div class="gallery-item reveal reveal-delay-1">
-                    <div class="gallery-img"><div class="gallery-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>સ્વાતંત્ર્ય દિવસ</span></div></div>
-                    <div class="gallery-overlay"><span class="gallery-overlay-text">સ્વાતંત્ર્ય પર્વ</span></div>
-                </div>
-                <div class="gallery-item reveal reveal-delay-2">
-                    <div class="gallery-img"><div class="gallery-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>વર્ગખંડ</span></div></div>
-                    <div class="gallery-overlay"><span class="gallery-overlay-text">વર્ગખંડ પ્રવૃત્તિ</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== CONTACT ===================== -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">સંપર્ક</div>
-                <h2 class="section-title">અમારો સંપર્ક કરો</h2>
-                <p class="section-title-en">Get In Touch</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info-cards">
-                    <div class="contact-card reveal">
-                        <div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                        <div class="contact-card-content"><h4>સરનામું</h4><p>શ્રી દહીડા પ્રાથમિક શાળા,<br>મું: દહીડા ગામ, તા: અમરેલી,<br>જિ: અમરેલી - ૩૬૫૬૦૧<br>ગુજરાત, ભારત</p></div>
-                    </div>
-                    <div class="contact-card reveal reveal-delay-1">
-                        <div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-                        <div class="contact-card-content"><h4>ફોન નંબર</h4><p><a href="tel:+919824298001">+91 ૯૮૨૪૨૯૮૦૦૧</a></p></div>
-                    </div>
-                    <div class="contact-card reveal reveal-delay-2">
-                        <div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-                        <div class="contact-card-content"><h4>શાળાનો સમય</h4><p>સોમવાર થી શનિવાર<br>સવારે ૧૦:૩૦ - સાંજે ૪:૩૦</p></div>
-                    </div>
-                    <div class="contact-card reveal reveal-delay-3">
-                        <div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                        <div class="contact-card-content"><h4>ઇમેઇલ</h4><p><a href="mailto:shridahidaschool@gmail.com">shridahidaschool@gmail.com</a></p></div>
-                    </div>
-                    <div class="map-wrapper reveal">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d71.2!3d21.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDM2JzAwLjAiTiA3McKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <a href="https://maps.app.goo.gl/pH2MQHLoEAxr4NQS9?g_st=atm" target="_blank" rel="noopener noreferrer" class="map-link-overlay">📍 Google Maps પર જુઓ</a>
-                    </div>
-                </div>
-                <div class="contact-form-wrapper reveal">
-                    <h3 class="contact-form-title">અમને સંદેશ મોકલો</h3>
-                    <p class="contact-form-subtitle">તમારો પ્રશ્ન અથવા સૂચન અમને જણાવો</p>
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group"><label for="name">તમારું નામ *</label><input type="text" id="name" name="name" placeholder="નામ દાખલ કરો" required></div>
-                            <div class="form-group"><label for="phone">ફોન નંબર *</label><input type="tel" id="phone" name="phone" placeholder="ફોન નંબર" required></div>
-                        </div>
-                        <div class="form-group"><label for="email">ઇમેઇલ</label><input type="email" id="email" name="email" placeholder="ઇમેઇલ દાખલ કરો"></div>
-                        <div class="form-group"><label for="subject">વિષય</label><select id="subject" name="subject"><option value="">વિષય પસંદ કરો</option><option value="admission">પ્રવેશ અંગે</option><option value="info">સામાન્ય માહિતી</option><option value="complaint">ફરિયાદ</option><option value="suggestion">સૂચન</option><option value="other">અન્ય</option></select></div>
-                        <div class="form-group"><label for="message">તમારો સંદેશ *</label><textarea id="message" name="message" placeholder="અહીં લખો..." required></textarea></div>
-                        <button type="submit" class="btn-submit">સંદેશ મોકલો →</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===================== FOOTER ===================== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <div class="logo-text"><span class="logo-text-main">શ્રી દહિડા પ્રાથમિક શાળા</span></div>
-                    <p>વર્ષ ૧૯૧૧થી દહિડા ગામમાં શિક્ષણનો દીપ પ્રગટાવતી સરકારી શાળા.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-                        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#1a472a"/></svg></a>
-                        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-                    </div>
-                </div>
-                <div class="footer-col"><h4>ઝડપી લિંક્સ</h4><ul><li><a href="#home">શરૂઆત</a></li><li><a href="#about">અમારા વિશે</a></li><li><a href="#facilities">સુવિધાઓ</a></li><li><a href="#staff">શિક્ષક મંડળ</a></li><li><a href="#gallery">ગેલેરી</a></li></ul></div>
-                <div class="footer-col"><h4>સુવિધાઓ</h4><ul><li><a href="#facilities">કમ્પ્યુટર લેબ</a></li><li><a href="#facilities">પુસ્તકાલય</a></li><li><a href="#facilities">રમતનું મેદાન</a></li><li><a href="#facilities">મધ્યાહન ભોજન</a></li><li><a href="#facilities">ડિજિટલ શિક્ષણ</a></li></ul></div>
-                <div class="footer-col"><h4>સંપર્ક માહિતી</h4><ul><li><a href="#">દહીડા ગામ, અમરેલી</a></li><li><a href="tel:+919824298001">+91 ૯૮૨૪૨૯૮૦૦૧</a></li><li><a href="mailto:shridahidaschool@gmail.com">ઇમેઇલ મોકલો</a></li></ul></div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; ૨૦૨૫ શ્રી દહિડા પ્રાથમિક શાળા. સર્વાધિકાર સુરક્ષિત.</p>
-                <div class="footer-bottom-links"><a href="#">ગોપનીયતા નીતિ</a><a href="#">નિયમો અને શરતો</a></div>
-            </div>
-        </div>
-    </footer>
-
-    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-    </button>
-
-    <!-- ===================== JAVASCRIPT ===================== -->
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('open'); });
-        navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('open'); }); });
-
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.pageYOffset > 50); });
-
-        const sections = document.querySelectorAll('section[id]');
-        const navItems = document.querySelectorAll('.nav-links a:not(.nav-cta)');
-        function updateActiveNav() {
-            const scrollY = window.pageYOffset + 120;
-            sections.forEach(section => {
-                if (scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
-                    navItems.forEach(item => { item.classList.remove('active'); if (item.getAttribute('href') === '#' + section.id) item.classList.add('active'); });
-                }
-            });
-        }
-        window.addEventListener('scroll', updateActiveNav);
-
-        const revealElements = document.querySelectorAll('.reveal');
-        function revealOnScroll() { revealElements.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible'); }); }
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
-
-        function animateCounters() {
-            document.querySelectorAll('.hero-stat-number').forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                const step = target / 125; let current = 0;
-                const timer = setInterval(() => { current += step; if (current >= target) { current = target; clearInterval(timer); } counter.textContent = Math.floor(current) + '+'; }, 16);
-            });
-        }
-        const heroObserver = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); heroObserver.unobserve(entry.target); } }); }, { threshold: 0.5 });
-        const heroStats = document.querySelector('.hero-stats');
-        if (heroStats) heroObserver.observe(heroStats);
-
-        const scrollTopBtn = document.getElementById('scrollTop');
-        window.addEventListener('scroll', () => { scrollTopBtn.classList.toggle('visible', window.pageYOffset > 400); });
-        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const message = document.getElementById('message').value.trim();
-            if (!name || !phone || !message) { alert('કૃપા કરીને બધી જરૂરી માહિતી ભરો.'); return; }
-            const btn = this.querySelector('.btn-submit');
-            const originalText = btn.textContent;
-            btn.textContent = 'સંદેશ મોકલાયો! ✓';
-            btn.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
-            setTimeout(() => { btn.textContent = originalText; btn.style.background = ''; this.reset(); }, 3000);
-        });
-    </script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+$('#brg').onclick=()=>{$('#brg').classList.toggle('ac');$('#nav').classList.toggle('open')};
+$$('.nav a').forEach(a=>a.onclick=()=>{$('#brg').classList.remove('ac');$('#nav').classList.remove('open')});
+window.addEventListener('scroll',()=>{
+  $('#hdr').classList.toggle('sc',scrollY>50);
+  $('#top').classList.toggle('v',scrollY>400);
+  $$('.rv').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight-80)el.classList.add('v')});
+  let sY=scrollY+120;
+  $$('section[id]').forEach(s=>{
+    if(sY>=s.offsetTop&&sY<s.offsetTop+s.offsetHeight){
+      $$('.nav a:not(.cta)').forEach(a=>{a.classList.remove('on');if(a.getAttribute('href')==='#'+s.id)a.classList.add('on')});
+    }
+  });
+});
+$('#top').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){
+  $$('.stat b').forEach(c=>{let t=+c.dataset.c,s=t/125,n=0;setInterval(()=>{n+=s;if(n>=t){n=t;clearInterval(this)}c.textContent=Math.floor(n)+'+'},16)});
+  this.unobserve(i.target);
+}})},{threshold:.5}).observe($('.stats'));
+$('#cf').onsubmit=function(e){
+  e.preventDefault();
+  if(!$('#nm').value.trim()||!$('#ph').value.trim()||!$('#mg').value.trim()){alert('કૃપા કરીને બધી જરૂરી માહિતી ભરો.');return}
+  let b=this.querySelector('.btn-s'),t=b.textContent;
+  b.textContent='સંદેશ મોકલાયો! ✓';b.style.background='linear-gradient(135deg,#27ae60,#2ecc71)';
+  setTimeout(()=>{b.textContent=t;b.style.background='';this.reset()},3000);
+};
+</script>
 </body>
 </html>
